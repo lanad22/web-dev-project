@@ -1,0 +1,16 @@
+
+.wd-nudge-up {
+    bottom: 32px;
+    left: 20px;
+}
+.nav-link.active.override-bs{
+    font-weight: bold;
+    text-decoration-line: underline;
+    text-decoration-thickness: 4px;
+    text-decoration-color:#0d6efd;
+    text-underline-offset: 0.5rem;
+    background-color: transparent !important;
+}
+.container-fluid.override-bs {
+
+}
