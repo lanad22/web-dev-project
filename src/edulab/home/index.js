@@ -6,7 +6,6 @@ const HomeComponent = () => {
     return(
         <>
             <div>
-                <NavigationComponent/>
                 <StartAPost/>
             </div>
         </>
