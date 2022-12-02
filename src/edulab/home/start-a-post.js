@@ -1,7 +1,7 @@
 const StartAPost = () => {
     return (
-        <div className="mt-3 row">
-            <div className="col-auto">
+        <div className="ms-3 mt-3 row">
+            <div className="col-1">
                 <img className = 'rounded-circle' src="/images/owl.jpeg" width={60}  alt="..."/>
             </div>
             <div className="col-11">
@@ -16,6 +16,7 @@ const StartAPost = () => {
                         </button>
                     </div>
                 </div>
+
                 <div className = 'row justify-content-around pt-3'>
                     <div className = 'col-3'>
                         <i className="bi bi-card-image me-2"></i>
@@ -35,10 +36,11 @@ const StartAPost = () => {
                     </div>
                 </div>
             </div>
-            <div className="col-12">
+            <div className = 'ps-0 pe-0 pt-2 row'>
                 <hr/>
             </div>
         </div>
+
     );
 }
 export default StartAPost;

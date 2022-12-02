@@ -3,7 +3,7 @@
     bottom: 32px;
     left: 20px;
 }
-.nav-link.active.override-bs{
+.nav-item.active.override-bs{
     font-weight: bold;
     text-decoration-line: underline;
     text-decoration-thickness: 4px;
@@ -11,6 +11,9 @@
     text-underline-offset: 0.5rem;
     background-color: transparent !important;
 }
-.container-fluid.override-bs {
-
+a:Link{
+    text-decoration: none;
+}
+.wd-background{
+    background-color: darkgrey;
 }
