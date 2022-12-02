@@ -2,16 +2,22 @@
 import './App.css';
 import {BrowserRouter} from "react-router-dom";
 import {Routes, Route} from "react-router";
-import NavigationComponent from "./components/navigation/";
 import HomeComponent from "./components/home";
+import BookmarkComponent from "./components/bookmarks";
 
 function App() {
-  return (
-      <div className="container">
-        <NavigationComponent/>
-        <HomeComponent/>
-      </div>
-  );
+    return (
+        <BrowserRouter>
+            <div className="container">
+                <Routes>
+                    <Route path="/*"
+                           element={<HomeComponent/>}/>
+                    <Route path="/bookmarks"
+                           element={<BookmarkComponent/>}/>
+                </Routes>
+            </div>
+        </BrowserRouter>
+    );
 }
 
 export default App;
