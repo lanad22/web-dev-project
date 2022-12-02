@@ -1,8 +1,8 @@
 import React from "react";
 import "./index.css";
+import {useLocation} from "react-router";
 
 const NavigationComponent = () => {
-
     return (
         <div className = 'row width-75'>
             <div className= 'row ms-5 me-5 p-0'>
