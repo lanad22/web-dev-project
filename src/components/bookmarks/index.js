@@ -6,7 +6,7 @@ const BookmarkComponent = () => {
         <>
             <div>
                 <NavigationComponent/>
-                Bookmarks
+                Bookmarks page filled
             </div>
         </>
     );
