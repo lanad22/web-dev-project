@@ -22,10 +22,10 @@ const NavigationComponent = () => {
                             <i className='bi bi-houses ps-2 pb-0 fs-4 text-black'></i>
                             <div className="text-black p-0">Home</div>
                         </Link>
-                        <li className='nav-item'>
-                            <i className="bi bi-bookmarks ps-4 pb-0 fs-4"></i>
-                            <a href="/#" className="nav-link text-black p-0">Bookmarks</a>
-                        </li>
+                        <Link to='/edulab/bookmarks' className = {`nav-item  ${pathname === '/edulab/bookmarks'?'active override-bs':''}`}>
+                            <i className='bi bi-houses ps-4 pb-0 fs-4 text-black'></i>
+                            <div className="text-black p-0">Bookmarks</div>
+                        </Link>
                         <Link to='/edulab/profile' className = {`nav-item  ${pathname === '/edulab/profile'?'active override-bs':''}`}>
                             <i className='bi bi-person-check ps-2 pb-0 fs-4 text-black'></i>
                             <div className="text-black p-0">Profile</div>

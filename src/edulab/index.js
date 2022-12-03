@@ -3,6 +3,7 @@ import NavigationComponent from "./navigation";
 import HomeComponent from "./home";
 import ProfileComponent from "./profile";
 import Ads from "./ads";
+import BookmarkComponent from "./bookmarks";
 
 function EduLab(){
     return(
@@ -16,12 +17,11 @@ function EduLab(){
                         <Route index
                                element={<HomeComponent/>}/>
                         <Route path="profile" element ={<ProfileComponent/>}/>
+                        <Route path="bookmarks" element ={<BookmarkComponent/>}/>
                     </Routes>
                 </div>
                 <div className = 'col-3'>
-                    <Routes>
-                        <Route path="/"    element={<Ads/>}/>
-                    </Routes>
+                    <Ads/>
                 </div>
 
             </div>
