@@ -1,9 +1,9 @@
 import {Routes, Route} from "react-router";
-import NavigationComponent from "./navigation";
-import HomeComponent from "./home";
-import ProfileComponent from "./profile";
-import Ads from "./ads";
-import BookmarkComponent from "./bookmarks";
+import NavigationComponent from "../navigation";
+import HomeComponent from "../home";
+import ProfileComponent from "../profile";
+import Ads from "../ads";
+import BookmarkComponent from "../bookmarks";
 
 function EduLab(){
     return(

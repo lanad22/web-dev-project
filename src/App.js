@@ -9,7 +9,7 @@ function App() {
                 <Routes>
                     <Route index
                            element={<EduLab/>}/>
-                    <Route path="/edulab/*" element={<EduLab/>}/>
+                    <Route path="/*" element={<EduLab/>}/>
                 </Routes>
             </div>
         </BrowserRouter>
