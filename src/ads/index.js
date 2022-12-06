@@ -7,10 +7,10 @@ const Ads = () => {
             </div>
             <div className = 'row'>
                 <div className = 'col-6 pe-1'>
-                    <img className = 'rounded-circle float-end' src="/images/owl.jpeg" width={60}  alt="..."/>
+                    <img className = 'rounded-circle float-end' src="/images/owl.jpeg" width={60} alt="..."/>
                 </div>
                 <div className = 'col-6 ps-1'>
-                    <img className = 'float-start' src="/images/nasa.png" width={60}  alt="..."/>
+                    <img className = 'float-start' src="/images/nasa.png" width={60} alt="..."/>
                 </div>
             </div>
             Explore relevant opportunities with Nasa
