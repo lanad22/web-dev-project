@@ -13,8 +13,8 @@ const NavigationComponent = () => {
                             <i className='bi bi-houses ps-2 pb-0 fs-4 text-black'></i>
                             <div className="text-black p-0">Home</div>
                         </Link>
-                        <Link to='/search'>
-                            <i className='bi bi-person-check ps-2 pb-0 fs-4 text-black'></i>
+                        <Link to='/search' className = {`nav-item  ${pathname === '/search'?'active override-bs':''}`}>
+                            <i className='bi bi-search ps-2 pb-0 fs-5 text-black'></i>
                             <div className="text-black p-0">Search</div>
                         </Link>
                         <Link to='/profile' className = {`nav-item  ${pathname === '/profile'?'active override-bs':''}`}>

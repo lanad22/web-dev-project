@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import MealList from "./MealList";
 
-function Search() {
+const Search = () => {
     const [mealData, setMealData] = useState(null);
-    const [calories, setCalories] = useState(2000);
+    const [query, setQueries] = useState(null);
 
-    function getMealData() {
+    const getMealData = () => {
         fetch(
-            `https://api.spoonacular.com/recipes/complexSearch?apiKey=3857cfd46a694bcba671969e6bf77753&query=${calories}&number=3`
+            `https://api.spoonacular.com/recipes/complexSearch?apiKey=3857cfd46a694bcba671969e6bf77753&query=${query}&number=6`
         )
             .then((response) => response.json())
             .then((data) => {
@@ -19,22 +19,28 @@ function Search() {
             });
     }
 
-    function handleChange(e) {
-        setCalories(e.target.value);
+    const handleChange = (e) => {
+        setQueries(e.target.value);
     }
 
     return (
         <div>
-            <div className = 'ps-1 position-relative'>
-                <input
-                    placeholder="Search a recipe (e.g. Chicken Fried Rice)"
-                    className="ps-5 mt-3 form-control rounded"
-                    onChange={handleChange}
-                />
-                <i className="bi bi-search wd-nudge-up position-relative"></i>
-                <button onClick={getMealData} className='btn btn-primary'>Search</button>
+                <div className = 'input-group ms-auto me-auto ps-1 w-25' >
+                    <input
+                        placeholder="Search"
+                        className="ps-2 mt-3 form-control"
+                        onChange={handleChange}
+                    />
+                    <div className = 'input-group-append mt-3'>
+                        <button onClick={getMealData} className='btn btn-secondary position-absolute'>
+                            <i className="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            <div className = 'row'>
+                {mealData && <MealList mealData={mealData} />}
             </div>
-            {mealData && <MealList mealData={mealData} />}
+
         </div>
     );
 }

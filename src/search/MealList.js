@@ -1,23 +1,29 @@
 import React from "react";
-import Meal from "./Meal";
+import { Link } from "react-router-dom";
 
-export default function MealList({ mealData }) {
-    const nutrients = mealData.nutrients;
-    console.log(nutrients);
-
+const MealList = ({mealData}) => {
     return (
-        <main>
-            <section className="nutrients">
-                <h1>Results</h1>
-                <ul>
-                </ul>
-            </section>
+        <div className="mt-3 row">
+            {mealData.results.map((meal) => {
+                return (
+                    <div key = {meal.title} className = 'p-4 col-4'>
+                        <div className ='card'>
+                            <img
+                                src={meal.image}
+                                className='card-img' alt="recipe"
+                            />
+                            <h5 className = 'p-3 text-capitalize'>{meal.title}</h5>
+                            <button>
+                                <Link to={{
+                                    pathname: `/meal/${meal.id}`}}>View Detail</Link>
+                            </button>
+                        </div>
 
-            <section className="meals">
-                {mealData.results.map((meal) => {
-                    return <Meal key={meal.id} meal={meal} />;
-                })}
-            </section>
-        </main>
+                    </div>
+                    );
+            })}
+        </div>
+
     );
-}
+};
+export default MealList

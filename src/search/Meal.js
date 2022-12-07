@@ -1,31 +1,47 @@
 import React, { useState, useEffect } from "react";
+import {useParams} from "react-router";
 
-export default function Meal({ meal }) {
-    const [imageUrl, setImageUrl] = useState("");
+const Meal = () => {
+    const {id} = useParams();
+    console.log(id);
+    const [detailData, setDetailData] = useState("");
 
     useEffect(() => {
         fetch(
-            `https://api.spoonacular.com/recipes/${meal.id}/information?apiKey=3857cfd46a694bcba671969e6bf77753&includeNutrition=false`
+            `https://api.spoonacular.com/recipes/${id}/information?apiKey=3857cfd46a694bcba671969e6bf77753&includeNutrition=false`
         )
             .then((response) => response.json())
             .then((data) => {
-                setImageUrl(data.image);
+                setDetailData(data);
             })
             .catch(() => {
                 console.log("error");
             });
-    }, [meal.id]);
+    }, [id]);
 
     return (
-        <article>
-            <h1>{meal.title}</h1>
-            <img src={imageUrl} alt="recipe" />
-            <ul className="instructions">
-                <li>Preparation time: {meal.readyInMinutes} minutes</li>
-                <li>Number of servings: {meal.servings}</li>
-            </ul>
+        <div className = 'p-3'>
+            <div className = 'card w-50 m-auto'>
+                <img
+                    src = {detailData.image}
+                    className='card-img' alt="recipe"
+                />
+                <h5 className='text-capitalize p-2'>{detailData.title}</h5>
+                <ul>
+                    <li>
+                        Ready in {detailData.readyInMinutes} minutes
+                    </li>
+                    <li>
+                        PUBLISHER: {detailData.sourceName}
+                    </li>
+                    <li>
+                        WEBSITE: <a href={detailData.sourceUrl}>{detailData.sourceUrl}</a>
+                    </li>
+                </ul>
 
-            <a href={meal.sourceUrl}>Go to Recipe</a>
-        </article>
+            </div>
+        </div>
+
     );
-}
+};
+export default Meal
