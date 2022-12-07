@@ -17,8 +17,8 @@ const ProfileItem = () => {
                     <li className = 'nav-link active'>
                         Profile
                     </li>
-                    <Link to='/edulab/network' className = {`nav-link  ${pathname === '/edulab/network'?'active override-bs':''}`}>
-                       Network
+                    <Link to='/bookmarks' className = {`nav-link  ${pathname === '/edulab/network'?'active override-bs':''}`}>
+                       Bookmarks
                     </Link>
 
                 </div>

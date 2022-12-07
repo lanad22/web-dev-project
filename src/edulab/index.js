@@ -4,6 +4,8 @@ import HomeComponent from "../home";
 import ProfileComponent from "../profile";
 import Ads from "../ads";
 import BookmarkComponent from "../bookmarks";
+import Search from "../search/Search";
+
 
 function EduLab(){
     return(
@@ -18,14 +20,13 @@ function EduLab(){
                                element={<HomeComponent/>}/>
                         <Route path="profile" element ={<ProfileComponent/>}/>
                         <Route path="bookmarks" element ={<BookmarkComponent/>}/>
+                        <Route path="search" element ={<Search/>}/>
                     </Routes>
                 </div>
                 <div className = 'col-3'>
                     <Ads/>
                 </div>
-
             </div>
-
         </div>
     );
 }
