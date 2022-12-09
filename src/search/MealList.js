@@ -1,10 +1,31 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
+import {useParams} from "react-router";
 
-const MealList = ({mealData}) => {
+const MealList = () => {
+    const {query} = useParams();
+    const [mealData, setMealData] = useState();
+
+    useEffect(() => {
+        fetch(
+            `https://api.spoonacular.com/recipes/complexSearch?apiKey=3857cfd46a694bcba671969e6bf77753&query=${query}&number=6`
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                setMealData(data);
+                console.log(data);
+            })
+            .catch(() => {
+                console.log("error");
+            });
+    },[query])
     return (
-        <div className="mt-3 row">
-            {mealData.results.map((meal) => {
+        <div>
+            <div className = 'pt-3 text-center'>
+                <h4>Results</h4>
+            </div>
+            <div className = 'row'>
+            {mealData && mealData.results.map((meal) => {
                 return (
                     <div key = {meal.title} className = 'p-4 col-4'>
                         <div className ='card'>
@@ -20,9 +41,11 @@ const MealList = ({mealData}) => {
                         </div>
 
                     </div>
-                    );
+                );
             })}
+            </div>
         </div>
+
 
     );
 };

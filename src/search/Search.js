@@ -1,23 +1,12 @@
 import React, { useState } from "react";
-import MealList from "./MealList";
+import {Link} from "react-router-dom";
+import {useLocation} from "react-router";
 
 const Search = () => {
-    const [mealData, setMealData] = useState(null);
+    const {pathname} = useLocation();
+    const paths = pathname.split('/')
+    const active = paths[1];
     const [query, setQueries] = useState(null);
-
-    const getMealData = () => {
-        fetch(
-            `https://api.spoonacular.com/recipes/complexSearch?apiKey=3857cfd46a694bcba671969e6bf77753&query=${query}&number=6`
-        )
-            .then((response) => response.json())
-            .then((data) => {
-                setMealData(data);
-                console.log(data);
-            })
-            .catch(() => {
-                console.log("error");
-            });
-    }
 
     const handleChange = (e) => {
         setQueries(e.target.value);
@@ -25,21 +14,20 @@ const Search = () => {
 
     return (
         <div>
-                <div className = 'input-group ms-auto me-auto ps-1 w-25' >
+                <div className = 'input-group' >
                     <input
                         placeholder="Search"
                         className="ps-2 mt-3 form-control"
                         onChange={handleChange}
                     />
                     <div className = 'input-group-append mt-3'>
-                        <button onClick={getMealData} className='btn btn-secondary position-absolute'>
-                            <i className="bi bi-search"></i>
+                        <button
+                            className = {`position-absolute btn  ${active === 'search' ?'btn-primary':'btn-dark'}`}>
+                            <Link to={{
+                                pathname: `/search/${query}`}}><i className="bi bi-search text-white"></i></Link>
                         </button>
                     </div>
                 </div>
-            <div className = 'row'>
-                {mealData && <MealList mealData={mealData} />}
-            </div>
 
         </div>
     );

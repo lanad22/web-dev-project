@@ -2,7 +2,7 @@ const StartAPost = () => {
     return (
         <div className="ms-3 mt-3 row">
             <div className="col-1">
-                <img className = 'rounded-circle' src="/images/owl.jpeg" width={60} alt="..."/>
+                <img className = 'rounded-circle' src="/images/cooking.jpeg" width={60} alt="..."/>
             </div>
             <div className="col-11">
                 <div className = 'row'>

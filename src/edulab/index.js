@@ -4,8 +4,8 @@ import HomeComponent from "../home";
 import ProfileComponent from "../profile";
 import Ads from "../ads";
 import BookmarkComponent from "../bookmarks";
-import Search from "../search/Search";
 import Meal from "../search/Meal";
+import MealList from "../search/MealList";
 import React from "react";
 
 
@@ -22,7 +22,7 @@ function EduLab(){
                                element={<HomeComponent/>}/>
                         <Route path="profile" element ={<ProfileComponent/>}/>
                         <Route path="bookmarks" element ={<BookmarkComponent/>}/>
-                        <Route path="search" element ={<Search/>}/>
+                        <Route path = "search/:query" element = {<MealList/>}/>
                         <Route path = "meal/:id" element = {<Meal/>}/>
                     </Routes>
                 </div>
