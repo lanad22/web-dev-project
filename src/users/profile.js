@@ -36,7 +36,8 @@ const Profile = () => {
                             </div>
                         </div>
                         <div className='row ps-3 pt-3'>
-                            <h5 className='col-10 fw-bold'>{currentUser.username}</h5>
+                            <h5 className='col-10 fw-bold'>{currentUser.firstname} {currentUser.lastname}</h5>
+                            <h5 className='col-10 fw-bold'>{currentUser.email}</h5>
                             <div className='col-2 pe-2 fw-bold float-end'>
                                 <i className="bi bi-pencil-square"></i>
                                 Edit

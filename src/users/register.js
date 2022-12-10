@@ -3,10 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {registerThunk} from "./user-thunks";
 
 const Register = () => {
-    const [username, setUsername] = useState('dan')
-    const [password, setPassword] = useState('dan123')
+    const [firstname, setFirstname] = useState('bob')
+    const [lastname, setLastname] = useState('hope')
+    const [email, setEmail] = useState('bobhope@gmail.com')
+    const [password, setPassword] = useState('bob123')
     const [type, setType] = useState('ENTHUSIAST')
-    const [validatePassword, setValidatePassword] = useState('dan123')
+    const [validatePassword, setValidatePassword] = useState('bob123')
     const [error, setError] = useState(null)
     const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch()
@@ -16,7 +18,7 @@ const Register = () => {
             return
         }
         setError(null)
-        const newUser = {username, password, type}
+        const newUser = {firstname, lastname, email, password, type}
         dispatch(registerThunk(newUser))
     }
     return(
@@ -30,15 +32,25 @@ const Register = () => {
             }
             <input
                 className="form-control mb-2"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}/>
+                value={firstname}
+                onChange={(e) => setFirstname(e.target.value)}/>
+            <input
+                className="form-control mb-2"
+                value={lastname}
+                onChange={(e) => setLastname(e.target.value)}/>
+            <input
+                className="form-control mb-2"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}/>
             <input
                 className="form-control mb-2"
                 value={password}
+                type={"password"}
                 onChange={(e) => setPassword(e.target.value)}/>
             <input
                 className="form-control mb-2"
                 value={validatePassword}
+                type={"password"}
                 onChange={(e) => setValidatePassword(e.target.value)}/>
             <input type="radio" id="chef" name="userType" value="CHEF"
                    onChange={(e) => setType("CHEF")}/>
