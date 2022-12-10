@@ -9,6 +9,8 @@ import React from "react";
 import Register from "../users/register";
 import Login from "../users/login";
 import Profile from "../users/profile";
+import EditProfile from "../users/edit-profile";
+import ProtectedRoute from "../users/ProtectedRoute";
 
 
 function EduLab(){
@@ -27,7 +29,14 @@ function EduLab(){
                         <Route path="meal/:id" element = {<Meal/>}/>
                         <Route path="register" element = {<Register/>}/>
                         <Route path="login" element = {<Login/>}/>
-                        <Route path="profile" element = {<Profile/>}/>
+                        <Route path="profile" element = {
+                            <ProtectedRoute>
+                                <Profile/>
+                            </ProtectedRoute>}/>
+                        <Route path="editprofile" element = {
+                            <ProtectedRoute>
+                                <EditProfile/>
+                            </ProtectedRoute>}/>
                     </Routes>
                 </div>
                 <div className = 'col-3'>

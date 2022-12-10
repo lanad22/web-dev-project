@@ -4,18 +4,17 @@ import {loginThunk, profileThunk, registerThunk} from "./user-thunks";
 import {Navigate, useNavigate} from "react-router-dom";
 
 const Login = () => {
-    const [username, setUsername] = useState('dan')
-    const [password, setPassword] = useState('dan123')
+    const [email, setEmail] = useState('bobhope@gmail.com')
+    const [password, setPassword] = useState('bob123')
     const [error, setError] = useState(null)
     const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleLoginBtn = () => {
         setError(null)
-        const loginUser = {username, password}
+        const loginUser = {email, password}
         dispatch(loginThunk(loginUser))
         navigate('/profile');
-        
     }
     return(
         <>
@@ -33,8 +32,8 @@ const Login = () => {
             }
             <input
                 className="form-control mb-2"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}/>
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}/>
             <input
                 className="form-control mb-2"
                 value={password}
