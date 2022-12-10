@@ -1,12 +1,14 @@
 import {Routes, Route} from "react-router";
 import NavigationComponent from "../navigation";
 import HomeComponent from "../home";
-import ProfileComponent from "../profile";
 import Ads from "../ads";
 import BookmarkComponent from "../bookmarks";
 import Meal from "../search/Meal";
 import MealList from "../search/MealList";
 import React from "react";
+import Register from "../users/register";
+import Login from "../users/login";
+import Profile from "../users/profile";
 
 
 function EduLab(){
@@ -20,10 +22,12 @@ function EduLab(){
                     <Routes>
                         <Route index
                                element={<HomeComponent/>}/>
-                        <Route path="profile" element ={<ProfileComponent/>}/>
                         <Route path="bookmarks" element ={<BookmarkComponent/>}/>
-                        <Route path = "search/:query" element = {<MealList/>}/>
-                        <Route path = "meal/:id" element = {<Meal/>}/>
+                        <Route path="search/:query" element = {<MealList/>}/>
+                        <Route path="meal/:id" element = {<Meal/>}/>
+                        <Route path="register" element = {<Register/>}/>
+                        <Route path="login" element = {<Login/>}/>
+                        <Route path="profile" element = {<Profile/>}/>
                     </Routes>
                 </div>
                 <div className = 'col-3'>
