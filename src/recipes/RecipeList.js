@@ -21,7 +21,7 @@ const RecipeList = () => {
         <ul className = 'list-group'>
             {
                 recipes.map((recipe) =>
-                <li classname = 'list-group-item'
+                <li className = 'list-group-item'
                     key={recipe._id}>
                     {recipe.title}
                 </li>)

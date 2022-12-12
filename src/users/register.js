@@ -7,7 +7,7 @@ const Register = () => {
     const [lastname, setLastname] = useState('hope')
     const [email, setEmail] = useState('bobhope@gmail.com')
     const [password, setPassword] = useState('bob123')
-    const [type, setType] = useState('ENTHUSIAST')
+    const [userType, userUserType] = useState('ENTHUSIAST')
     const [validatePassword, setValidatePassword] = useState('bob123')
     const [error, setError] = useState(null)
     const {currentUser} = useSelector((state) => state.users)
@@ -18,7 +18,8 @@ const Register = () => {
             return
         }
         setError(null)
-        const newUser = {firstname, lastname, email, password, type}
+        console.log("123")
+        const newUser = {firstname, lastname, email, password, userType}
         dispatch(registerThunk(newUser))
     }
     return(
@@ -53,11 +54,11 @@ const Register = () => {
                 type={"password"}
                 onChange={(e) => setValidatePassword(e.target.value)}/>
             <input type="radio" id="chef" name="userType" value="CHEF"
-                   onChange={(e) => setType("CHEF")}/>
+                   onChange={(e) => userUserType("CHEF")}/>
             <label htmlFor="chef">Chef</label>
             <input className="ms-4" type="radio" id="enthusiast" name="userType" value="ENTHUSIAST"
                    defaultChecked={true}
-                   onChange={(e) => setType("ENTHUSIAST")}/>
+                   onChange={(e) => userUserType("ENTHUSIAST")}/>
             <label htmlFor="enthusiast">Enthusiast</label>
             <button
                 onClick={handleRegisterBtn}
