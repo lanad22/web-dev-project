@@ -1,7 +1,7 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {loginThunk, profileThunk, registerThunk} from "./user-thunks";
-import {Navigate, useNavigate} from "react-router-dom";
+import {loginThunk} from "./user-thunks";
+import {Navigate} from "react-router-dom";
 
 const Login = () => {
     const [email, setEmail] = useState('bobhope@gmail.com')
