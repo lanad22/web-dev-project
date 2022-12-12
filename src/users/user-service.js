@@ -1,47 +1,38 @@
-import axios from "axios";
-const BASE_URL = 'http://localhost:4000'
-
-let user = null;
+import axios from "axios"
+const BASE_URL = 'https://the-food-network.onrender.com'
+//const BASE_URL = 'http://localhost:4000'
+const api = axios.create({withCredentials: true});
 
 export const findAllUsers = async () => {
-    const response = await axios.get('http://localhost:4000/users')
+    const response = await api.get('http://localhost:4000/users')
     return response.data
 }
 
-//TODO: Uncomment
-export const register = async (user_) => {
-    //const response = await axios.post(`${BASE_URL}/register`, user)
-    user = user_
-    console.log("registered")
-    return user
+export const register = async (user) => {
+    const response = await api.post(`${BASE_URL}/api/auth/signup`, user)
+    return response.data
 }
 
-//TODO: Uncomment
-export const login = async (user_) => {
-    //const response = await axios.post(`${BASE_URL}/login`, user)
-    if(user != null) {
-        if(user_.email === user.email
-        && user_.password === user.password) {
-            console.log("authenticated")
-            return user;
-        }
-    }
-    console.log("no auth")
-    return user;
+export const login = async (user) => {
+    const response = await api.post(`${BASE_URL}/api/auth/login`, user)
+    console.log(response.data)
+    return response.data;
 }
 
 export const profile = async () => {
-    // const response = await axios.post(`${BASE_URL}/profile`)
-    return user;
+    console.log("getting profile")
+    const response = await api.get(`${BASE_URL}/api/auth/profile`)
+    console.log(response.data)
+    return response.data;
 }
 
 export const logout = async () => {
-//    const response = await axios.post(`${BASE_URL}/logout`)
-    return {}
+    const response = await api.post(`${BASE_URL}/api/auth/logout`)
+    return response.data
 }
 
 export const deleteUser = async (uid) => {}
+
 export const editProfile = async (user_) => {
-    user = user_
-    return user;
+
 }
