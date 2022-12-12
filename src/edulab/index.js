@@ -12,10 +12,22 @@ import Profile from "../users/profile";
 import EditProfile from "../users/edit-profile";
 import ProtectedRoute from "../users/ProtectedRoute";
 
+import {Provider} from "react-redux";
 
+import recipesReducer from "../recipes/recipes-reducer"
+import usersReducer from "../users/user-reducer"
+import {configureStore} from "@reduxjs/toolkit";
+
+const store = configureStore({
+    reducer: {
+        recipes: recipesReducer,
+        users: usersReducer
+    }
+})
 function EduLab(){
     return(
         <div className="container">
+            <Provider store = {store}>
             <div className = 'row bg-white p-0'>
                 <NavigationComponent/>
             </div>
@@ -43,6 +55,7 @@ function EduLab(){
                     <Ads/>
                 </div>
             </div>
+            </Provider>
         </div>
     );
 }
