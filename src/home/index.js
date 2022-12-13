@@ -14,7 +14,7 @@ const HomeComponent = () => {
                 }
                 {
                     currentUser &&
-                    currentUser.userType === 'chef' &&
+                    currentUser.userType === 'CHEF' &&
                     <StartAPost/>
 
                 }

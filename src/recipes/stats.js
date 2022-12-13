@@ -6,7 +6,7 @@ const Stats = () => {
             <p>
                 <i className="bi bi-heart pe-2 fs-5 pb-3"></i>
             </p>
-            <i className="bi bi-bookmark fs-5"></i>
+            <i className="bi bi-book fs-5"></i>
         </div>
     );
 };

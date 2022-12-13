@@ -2,11 +2,12 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import Stats from "./stats";
-import {deleteRecipeThunk, findRecipeByIdThunk} from "./recipes-thunks";
+import {findRecipeByIdThunk} from "./recipes-thunks";
 import {Link} from "react-router-dom";
 
 const RecipeItem = () => {
     const {id} = useParams();
+    console.log(id)
     const {searchedRecipe} = useSelector((state) => state.recipes)
     const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch();
@@ -14,18 +15,22 @@ const RecipeItem = () => {
     useEffect(() => {
         console.log("in dispatch");
         dispatch(findRecipeByIdThunk(id))
-    }, [id])
+    }, [])
 
+    console.log(searchedRecipe)
     return (
 
         <div className='list-group-item'>
             <div className='row'>
                 <div className="float-start col-auto">
-                    <Link to={`/profile/${searchedRecipe.chef._id}`}>
-                        <img width={50}
-                             alt = '...' className="float-end rounded-circle"
-                             src='/images/owl.jpeg'/>
-                    </Link>
+                    {
+                        searchedRecipe.chef &&
+                        <Link to={`/profile/${searchedRecipe.chef._id}`}>
+                            <img width={50}
+                                 alt='...' className="float-end rounded-circle"
+                                 src='/images/owl.jpeg'/>
+                        </Link>
+                    }
 
                 </div>
                 <div className="col-9">
@@ -35,12 +40,11 @@ const RecipeItem = () => {
                         </span>
                     }
                     {searchedRecipe.postedOn}
-                    {
-                        currentUser &&
-                        <div className='mt-4 float-end'>
-                            <Stats/>
-                        </div>
-                    }
+
+                    <div className='mt-4 float-end'>
+                        <Stats/>
+                    </div>
+
                     <div className='mt-2 mb-2 ms-auto me-auto card w-75'>
                         <img
                             src="/images/chicken.jpg"
@@ -75,7 +79,6 @@ const RecipeItem = () => {
                     </div>
 
                 </div>
-
             </div>
         </div>
     );

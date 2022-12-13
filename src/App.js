@@ -6,11 +6,13 @@ import {configureStore} from "@reduxjs/toolkit";
 import UserReducer from "./users/user-reducer";
 import CurrentUser from "./users/current-user";
 import RecipesReducer from "./recipes/recipes-reducer";
+import ResultsReducer from "./search/search-reducer";
 
 const store = configureStore({
     reducer: {
         users: UserReducer,
-        recipes: RecipesReducer
+        recipes: RecipesReducer,
+        results: ResultsReducer
     }
 })
 

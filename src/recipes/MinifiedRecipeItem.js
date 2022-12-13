@@ -50,7 +50,7 @@ const MinifiedRecipeItem = ({recipe}) => {
                                 {recipe.title}
                             </h4>
                             <p>
-                                Chicken ? pasta in a garlic tomato cream sauce is the ultimate comfort meal
+                                Chicken pasta in a garlic tomato cream sauce is the ultimate comfort meal
                             </p>
                         </div>
                     </div>
