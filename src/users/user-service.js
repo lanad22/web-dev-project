@@ -1,10 +1,16 @@
 import axios from "axios"
-const BASE_URL = 'https://the-food-network.onrender.com'
-//const BASE_URL = 'http://localhost:4000'
+//const BASE_URL = 'https://the-food-network.onrender.com'
+const BASE_URL = 'http://localhost:4000'
 const api = axios.create({withCredentials: true});
 
 export const findAllUsers = async () => {
-    const response = await api.get('http://localhost:4000/users')
+    const response = await api.get(`${BASE_URL}/users`)
+    return response.data
+}
+
+export const findUserById = async (uid) => {
+    const response = await axios.get(`${BASE_URL}/api/users/${uid}`);
+    console.log(response.data)
     return response.data
 }
 

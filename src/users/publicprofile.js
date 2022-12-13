@@ -1,26 +1,26 @@
-import {useDispatch, useSelector} from "react-redux";
-import {logoutThunk} from "./user-thunks";
-import {Link, Navigate, useNavigate} from "react-router-dom";
-import React from "react";
+import {Link} from "react-router-dom";
+import React, {useEffect} from "react";
 import {useParams} from "react-router";
+import {useDispatch, useSelector} from "react-redux";
+import {findUserByIdThunk} from "./user-thunks";
 
-const Profile = () => {
-    const {currentUser} = useSelector((state) => state.users)
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const handleLogout = () => {
-        dispatch(logoutThunk())
-        navigate('/login')
-    }
-    return (
+const PublicProfile = () => {
+    const {uid} = useParams();
+    console.log(uid)
+    useEffect(() => {
+        dispatch(findUserByIdThunk(uid))
+    }, [uid])
+    const {searchedUser} = useSelector((state) => state.users);
+    const dispatch = useDispatch();
+     return (
         <>
             {
-                currentUser &&
+                searchedUser &&
                 <>
 
                     <div>
                         <Link to="/" className="text-decoration-none text-black">
-                            <i className="bi bi-arrow-left fs-3 fw-bold" style={{fontStyle:"normal"}}>{currentUser.firstName} {currentUser.lastName}</i>
+                            <i className="bi bi-arrow-left fs-3 fw-bold" style={{fontStyle:"normal"}}>{searchedUser.firstName} {searchedUser.lastName}</i>
                         </Link>
                         <div>
                             <div>
@@ -38,20 +38,11 @@ const Profile = () => {
                                          marginLeft : `20px`
                                      }}
                                 />
-                                <button className="rounded-pill border-secondary fw-bold bg-white border-opacity-25 float-end mt-2 me-2"
-                                        style={{
-                                            "height": "40px",
-                                            "width": "150px"
-                                        }}>
-                                    <Link to="/editprofile">Edit Profile</Link>
-
-                                </button>
                             </div>
                             <div style={{marginTop:75, marginLeft:20}}>
-                                <h3 className="fw-bold text-capitalize">{currentUser.firstname} {currentUser.lastname}</h3>
-                                <div className="text-secondary mb-3" style={{marginTop:`-10px`}}>{currentUser.type}</div>
-                                <div className="text-secondary mb-3" style={{marginTop:`-20px`}}>{currentUser.email}</div>
-                                <p>{currentUser.bio}</p>
+                                <h3 className="fw-bold text-capitalize">{searchedUser.firstname} {searchedUser.lastname}</h3>
+                                <div className="text-secondary mb-3" style={{marginTop:`-10px`}}>{searchedUser.type}</div>
+                                <div className="text-secondary mb-3" style={{marginTop:`-20px`}}>{searchedUser.email}</div>
                                 <i className="bi bi-geo-alt pe-4" style={{fontStyle:"normal"}}>Boston</i>
                                 <i className="bi bi-geo pe-4" style={{fontStyle:"normal"}}> Born 12/17</i>
                                 <i className="bi bi-calendar pe-4" style={{fontStyle:"normal"}}> Joined 12/17</i>
@@ -64,9 +55,6 @@ const Profile = () => {
                         </div>
                     </div>
                     <br/>
-                    <button className="ms-4 mt-2 btn btn-danger" onClick={handleLogout}>
-                        Logout
-                    </button>
 
                 </>
             }
@@ -76,4 +64,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default PublicProfile;
