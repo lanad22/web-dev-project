@@ -2,7 +2,6 @@ import {Routes, Route} from "react-router";
 import NavigationComponent from "../navigation";
 import HomeComponent from "../home";
 import Ads from "../ads";
-import BookmarkComponent from "../bookmarks";
 import Meal from "../search/Meal";
 import MealList from "../search/MealList";
 import React from "react";
@@ -12,6 +11,7 @@ import Profile from "../users/profile";
 import EditProfile from "../users/edit-profile";
 import ProtectedRoute from "../users/ProtectedRoute";
 import RecipeItem from "../recipes/RecipeItem";
+import Cookbook from "../cookbook";
 
 function EduLab(){
     return(
@@ -25,7 +25,6 @@ function EduLab(){
                         <Route index
                                element={<HomeComponent/>}/>
                                <Route path="recipes/:id" element = {<RecipeItem/>}/>
-                        <Route path="bookmarks" element ={<BookmarkComponent/>}/>
                         <Route path="search/:query" element = {<MealList/>}/>
                         <Route path="details/:query/:id" element = {<Meal/>}/>
                         <Route path="register" element = {<Register/>}/>
@@ -33,6 +32,10 @@ function EduLab(){
                         <Route path="profile" element = {
                             <ProtectedRoute>
                                 <Profile/>
+                            </ProtectedRoute>}/>
+                        <Route path="cookbook" element = {
+                            <ProtectedRoute>
+                                <Cookbook/>
                             </ProtectedRoute>}/>
                         <Route path="editprofile" element = {
                             <ProtectedRoute>

@@ -8,7 +8,6 @@ const CurrentUser = ({children}) => {
     useEffect(() => {
         dispatch(profileThunk())
     }, [])
-    console.log(currentUser)
     return(children)
 }
 export default CurrentUser

@@ -16,7 +16,7 @@ const recipesReducer = createSlice({
         [findRecipeByIdThunk.fulfilled]:
             (state,{payload}) => {
                 console.log(payload)
-                state.recipes = state.recipes.find(r => r._id === payload)
+                state.recipes = payload
             },
         [createRecipeThunk.fulfilled]:
             (state,action) => {
