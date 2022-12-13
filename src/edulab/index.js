@@ -27,7 +27,7 @@ function EduLab(){
                                element={<HomeComponent/>}/>
                         <Route path="recipes/:id" element = {<RecipeItem/>}/>
                         <Route path="search/:query" element = {<MealList/>}/>
-                        <Route path="details/:query/:id" element = {<Meal/>}/>
+                        <Route path="details/:id" element = {<Meal/>}/>
                         <Route path="register" element = {<Register/>}/>
                         <Route path="login" element = {<Login/>}/>
                         <Route path="profile/:uid" element = { <PublicProfile/>} />

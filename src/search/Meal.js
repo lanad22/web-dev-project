@@ -1,24 +1,27 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
-import {findAllRecipesThunk} from "../recipes/recipes-thunks";
-import {Link} from "react-router-dom";
 import {findResultByIdThunk} from "./search-thunks";
+import {createRecipeThunk} from "../recipes/recipes-thunks";
 
 const Meal = () => {
-    const {query, id} = useParams();
+    const {id} = useParams();
     const {detail} = useSelector((state) => state.results)
     const {recipes} = useSelector((state) => state.recipes)
     const dispatch = useDispatch()
+    const [newRecipe, setNewRecipe] = useState('')
 
     useEffect(() => {
         dispatch(findResultByIdThunk(id))
-        dispatch(findAllRecipesThunk())
     }, [id]);
 
-    const results = recipes.filter(recipe => {
-        return recipe.title.toLowerCase().includes(query.toLowerCase())
-    })
+    const handleCreateRecipeBtn = () => {
+        dispatch(createRecipeThunk({
+            newRecipe,
+            id
+        }))
+    }
+
     return (
         <div className = 'p-3'>
             <div className = 'card w-50 m-auto'>
@@ -40,15 +43,17 @@ const Meal = () => {
                 </ul>
 
             </div>
-            <h4>Related Recipes</h4>
-            {
-                results && results.map((recipe) => (
-                    <Link to={{
-                        pathname: `/recipes/${recipe._id}`}}>
-                    <li>{recipe.title}</li>
-                    </Link>
-                ))
-            }
+            <div>
+                <h4>Recipes for {detail.title}</h4>
+                <input
+                    onChange={(e) => setNewRecipe(e.target.value)}
+                    className = 'form-control'
+                ></input>
+                <button onClick={handleCreateRecipeBtn}>Create a new recipe</button>
+            </div>
+
+
+
         </div>
 
     );

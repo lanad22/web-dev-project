@@ -6,12 +6,12 @@ import {Link} from "react-router-dom";
 
 const Ads = () => {
     const dispatch = useDispatch();
-    const {results} = useSelector((state) => state.results)
+    const {trending} = useSelector((state) => state.results)
     useEffect(() => {
         console.log('dispatch')
         dispatch(findTrendingResultThunk())
     }, [])
-    console.log(results)
+    console.log(trending)
     return(
         <>
             <div className="p-2 list-group border border-light">
@@ -20,7 +20,7 @@ const Ads = () => {
                     Trending Now
                 </h6>
 
-                {results.recipes && results.recipes.map((meal) =>
+                {trending.recipes && trending.recipes.map((meal) =>
                     (
                         <div className='list-group-item'>
                             <div className = 'row p-2'>

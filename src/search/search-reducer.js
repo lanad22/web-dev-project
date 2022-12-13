@@ -3,6 +3,7 @@ import {findAllResultsThunk, findResultByIdThunk, findTrendingResultThunk} from 
 
 const initialState = {
     results: [],
+    trending: [],
     detail: {}
 }
 const resultsReducer = createSlice({
@@ -19,7 +20,7 @@ const resultsReducer = createSlice({
             },
         [findTrendingResultThunk.fulfilled]:
             (state,action) => {
-                state.results = action.payload
+                state.trending = action.payload
             }
     }
 })

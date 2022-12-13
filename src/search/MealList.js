@@ -3,13 +3,13 @@ import {Link} from "react-router-dom";
 import {useParams} from "react-router";
 import {findAllResultsThunk} from "./search-thunks";
 import {useDispatch, useSelector} from "react-redux";
-import {findAllRecipesThunk} from "../recipes/recipes-thunks";
 
 const MealList = () => {
     const {query} = useParams();
     console.log(query)
     const dispatch = useDispatch();
     const {results} = useSelector((state) => state.results)
+
     useEffect(() => {
         console.log('dispatch')
         dispatch(findAllResultsThunk(query))
@@ -27,7 +27,7 @@ const MealList = () => {
 
                         <div key={meal.title} className='p-4 col-4'>
                             <Link to={{
-                                pathname: `/details/${query}/${meal.id}`
+                                pathname: `/details/${meal.id}`
                             }}>
                                 <div className='card'>
                                     <img

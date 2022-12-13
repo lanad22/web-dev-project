@@ -1,7 +1,6 @@
 import axios from 'axios';
-//const BASE_URL = 'https://the-food-network.onrender.com'
-const BASE_URL = 'http://localhost:4000'
-const RECIPES_API = `${BASE_URL}/api/recipes`;
+const BASE_URL = 'http://localhost:4000/api'
+const RECIPES_API = `${BASE_URL}/recipes`;
 
 export const findAllRecipes = async () => {
     const response = await axios.get(RECIPES_API);
