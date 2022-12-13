@@ -2,32 +2,39 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import Stats from "./stats";
-import {deleteRecipeThunk} from "./recipes-thunks";
+import {deleteRecipeThunk, findRecipeByIdThunk} from "./recipes-thunks";
+import {Link} from "react-router-dom";
 
 const RecipeItem = () => {
     const {id} = useParams();
-    const [recipe, setRecipe] = useState("")
+    const {searchedRecipe} = useSelector((state) => state.recipes)
     const {currentUser} = useSelector((state) => state.users)
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        dispatch(deleteRecipeThunk(id))
-    }, [id]);
+        console.log("in dispatch");
+        dispatch(findRecipeByIdThunk(id))
+    }, [id])
+
     return (
 
         <div className='list-group-item'>
             <div className='row'>
                 <div className="float-start col-auto">
-                    <img width={50}
-                         alt='...' className="float-end rounded-circle"
-                         src='/images/cooking.jpeg'/>
+                    <Link to={`/profile/${searchedRecipe.chef._id}`}>
+                        <img width={50}
+                             alt = '...' className="float-end rounded-circle"
+                             src='/images/owl.jpeg'/>
+                    </Link>
+
                 </div>
                 <div className="col-9">
-                    {recipe.chef &&
-                    <span className='text-capitalize fw-bold'>{recipe.chef.firstname} {recipe.chef.lastname}
+                    {searchedRecipe.chef &&
+                    <span className='text-capitalize fw-bold'>{searchedRecipe.chef.firstname} {searchedRecipe.chef.lastname}
                         <i className="ps-2 fa-duotone fa-hat-chef"></i><br/>
                         </span>
                     }
-                    {recipe.postedOn}
+                    {searchedRecipe.postedOn}
                     {
                         currentUser &&
                         <div className='mt-4 float-end'>
@@ -41,7 +48,7 @@ const RecipeItem = () => {
                         />
                         <div className='p-2'>
                             <h4>
-                                {recipe.title}
+                                {searchedRecipe.title}
                             </h4>
                             <p>
                                 Chicken pasta ?? in a garlic tomato cream sauce is the ultimate comfort meal
@@ -58,7 +65,7 @@ const RecipeItem = () => {
                             <div className = 'p-2'>
                                 <h5><i className="bi bi-journal-text pe-2"></i>Steps</h5>
                                 {
-                                    recipe.steps && recipe.steps.map((step) => (
+                                    searchedRecipe.steps && searchedRecipe.steps.map((step) => (
                                         <li>{step}</li>
                                     ))
                                 }

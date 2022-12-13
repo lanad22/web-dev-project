@@ -1,20 +1,25 @@
 import {useDispatch, useSelector} from "react-redux";
-import {deleteRecipeThunk, findAllRecipesThunk} from "./recipes-thunks";
+import {deleteRecipeThunk} from "./recipes-thunks";
 import {Link} from "react-router-dom";
 
 const MinifiedRecipeItem = ({recipe}) => {
     const {currentUser} = useSelector((state) => state.users)
+    const {recipes} = useSelector((state) => state.recipes)
     const dispatch = useDispatch()
     const deleteRecipeHandler = (id) => {
         dispatch(deleteRecipeThunk(id))
     }
+    console.log(recipes)
     return (
         <li key = {recipe._id} className = 'list-group-item'>
             <div className = 'row'>
                 <div className="float-start col-auto">
-                    <img width={50}
-                         alt = '...' className="float-end rounded-circle"
-                         src='/images/cooking.jpeg'/>
+                    <Link to={`/profile/${recipe.chef._id}`}>
+                        <img width={50}
+                             alt = '...' className="float-end rounded-circle"
+                             src='/images/owl.jpeg'/>
+                    </Link>
+
                 </div>
                 <div className="col-10">
                     <div className = 'row float-end'>
