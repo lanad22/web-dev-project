@@ -3,13 +3,18 @@ import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {findResultByIdThunk} from "./search-thunks";
 import {createRecipeThunk} from "../recipes/recipes-thunks";
+import RecipeList from "../recipes/RecipeList";
 
 const Meal = () => {
     const {id} = useParams();
     const {detail} = useSelector((state) => state.results)
     const {recipes} = useSelector((state) => state.recipes)
+    const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch()
-    const [newRecipe, setNewRecipe] = useState('')
+    const newRecipeTitle = 'new recipe'
+    const newRecipeStep = []
+    const newRecipeId = '123'
+    const newRecipe = {newRecipeTitle, newRecipeStep, newRecipeId}
 
     useEffect(() => {
         dispatch(findResultByIdThunk(id))
@@ -17,11 +22,10 @@ const Meal = () => {
 
     const handleCreateRecipeBtn = () => {
         dispatch(createRecipeThunk({
-            newRecipe,
-            id
+            newRecipe
         }))
     }
-
+    console.log(currentUser)
     return (
         <div className = 'p-3'>
             <div className = 'card w-50 m-auto'>
@@ -43,13 +47,16 @@ const Meal = () => {
                 </ul>
 
             </div>
+
             <div>
                 <h4>Recipes for {detail.title}</h4>
-                <input
-                    onChange={(e) => setNewRecipe(e.target.value)}
-                    className = 'form-control'
-                ></input>
-                <button onClick={handleCreateRecipeBtn}>Create a new recipe</button>
+                {
+
+                    currentUser &&
+                    <button onClick={handleCreateRecipeBtn}>Create a new recipe</button>
+                }
+
+                <RecipeList/>
             </div>
 
 
