@@ -25,23 +25,30 @@ const NavigationComponent = () => {
                         {
                             currentUser
                             &&
-                            <Link to='/profile' className = {`nav-item  ${pathname === '/profile'?'active override-bs':''}`}>
-                                <i className='bi bi-person-check ps-2 pb-0 fs-4 text-black'></i>
-                                <div className="text-black p-0">Profile</div>
-                            </Link>
+                            <>
+                                <Link to='/profile' className = {`nav-item  ${pathname === '/profile'?'active override-bs':''}`}>
+                                    <i className='bi bi-person-check ps-2 pb-0 fs-4 text-black'></i>
+                                    <div className="text-black p-0">Profile</div>
+                                </Link>
+                                <Link to='/cookbook' className = {`nav-item  ${pathname === '/cookbook'?'active override-bs':''}`}>
+                                    <i className='bi bi-book ps-2 pb-0 fs-4 text-black'></i>
+                                    <div className="text-black p-0">Cookbook</div>
+                                </Link>
+                            </>
+
                         }
                         {
                             currentUser === null
                             &&
                             <>
-                            <Link to='/login' className = {`nav-item  ${pathname === '/login'?'active override-bs':''}`}>
-                                <i className='bi bi-person-plus ps-4 pb-0 fs-4 text-black'></i>
-                                <div className="text-black p-0">Login</div>
-                            </Link>
-                            <Link to='/register' className = {`nav-item  ${pathname === '/register'?'active override-bs':''}`}>
-                                <i className='bi bi-person-plus ps-4 pb-0 fs-4 text-black'></i>
-                                <div className="text-black p-0">Register</div>
-                            </Link>
+                                <Link to='/login' className = {`nav-item  ${pathname === '/login'?'active override-bs':''}`}>
+                                    <i className='bi bi-person-plus ps-4 pb-0 fs-4 text-black'></i>
+                                    <div className="text-black p-0">Login</div>
+                                </Link>
+                                <Link to='/register' className = {`nav-item  ${pathname === '/register'?'active override-bs':''}`}>
+                                    <i className='bi bi-person-plus ps-4 pb-0 fs-4 text-black'></i>
+                                    <div className="text-black p-0">Register</div>
+                                </Link>
                             </>
                         }
                     </ul>

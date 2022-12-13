@@ -1,19 +1,15 @@
-import React, {useEffect, useState} from "react";
-import {useParams} from "react-router";
-import {useDispatch, useSelector} from "react-redux";
-import Stats from "./stats";
-import {deleteRecipeThunk} from "./recipes-thunks";
+import React from "react"
+import "./index.css"
+import Stats from "../recipes/stats";
+import {useSelector} from "react-redux";
 
-const RecipeItem = () => {
-    const {id} = useParams();
-    const [recipe, setRecipe] = useState("")
-    const {currentUser} = useSelector((state) => state.users)
-    const dispatch = useDispatch()
-    useEffect(() => {
-        dispatch(deleteRecipeThunk(id))
-    }, [id]);
-    return (
-
+const CookbookItem = (
+    {
+        post
+    }
+    ) => {
+    const {currentUser} = useSelector((state) => state.users);
+    return(
         <div className='list-group-item'>
             <div className='row'>
                 <div className="float-start col-auto">
@@ -22,12 +18,12 @@ const RecipeItem = () => {
                          src='/images/cooking.jpeg'/>
                 </div>
                 <div className="col-9">
-                    {recipe.chef &&
-                    <span className='text-capitalize fw-bold'>{recipe.chef.firstname} {recipe.chef.lastname}
-                        <i className="ps-2 fa-duotone fa-hat-chef"></i><br/>
+                    {post.chef &&
+                        <span className='text-capitalize fw-bold'>{post.chef.firstname} {post.chef.lastname}
+                            <i className="ps-2 fa-duotone fa-hat-chef"></i><br/>
                         </span>
                     }
-                    {recipe.postedOn}
+                    {post.postedOn}
                     {
                         currentUser &&
                         <div className='mt-4 float-end'>
@@ -41,10 +37,10 @@ const RecipeItem = () => {
                         />
                         <div className='p-2'>
                             <h4>
-                                {recipe.title}
+                                {post.title}
                             </h4>
                             <p>
-                                Chicken pasta ?? in a garlic tomato cream sauce is the ultimate comfort meal
+                                Chicken pasta in a garlic tomato cream sauce is the ultimate comfort meal
                             </p>
                             <div className = 'p-2'>
                                 <h5><i className="bi bi-cart4 pe-2 "></i>Ingredients</h5>
@@ -58,7 +54,7 @@ const RecipeItem = () => {
                             <div className = 'p-2'>
                                 <h5><i className="bi bi-journal-text pe-2"></i>Steps</h5>
                                 {
-                                    recipe.steps && recipe.steps.map((step) => (
+                                    post.steps && post.steps.map((step) => (
                                         <li>{step}</li>
                                     ))
                                 }
@@ -73,4 +69,4 @@ const RecipeItem = () => {
         </div>
     );
 };
-export default RecipeItem
+export default CookbookItem;

@@ -4,8 +4,8 @@ import {loginThunk} from "./user-thunks";
 import {Navigate} from "react-router-dom";
 
 const Login = () => {
-    const [email, setEmail] = useState('bobhope@gmail.com')
-    const [password, setPassword] = useState('bob123')
+    const [email, setEmail] = useState('songoku@gmail.com')
+    const [password, setPassword] = useState('son123')
     const [error, setError] = useState(null)
     const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch()
