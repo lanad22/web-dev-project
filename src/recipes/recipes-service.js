@@ -7,8 +7,16 @@ export const findAllRecipes = async () => {
     const recipes = response.data;
     return recipes;
 }
-export const createRecipe = async () => {
-    const response = await axios.post(RECIPES_API);
-    const newRecipe = response.data
-    return newRecipe
+export const findRecipeById = async (rid) => {
+    const response = await axios.get(`${RECIPES_API}/${rid}`)
+    return response.data;
+}
+export const createRecipe = async (newRecipe) => {
+    const response = await axios.post(`${BASE_URL}/users/me/recipes`, newRecipe);
+    const actualRecipe = response.data
+    return actualRecipe
+}
+export const deleteRecipe = async (rid) => {
+    const response = await axios.delete(`${RECIPES_API}/${rid}`)
+    return response.data
 }

@@ -36,7 +36,7 @@ const MealList = () => {
                             <h5 className = 'p-3 text-capitalize'>{meal.title}</h5>
                             <button>
                                 <Link to={{
-                                    pathname: `/meal/${meal.id}`}}>View Detail</Link>
+                                    pathname: `/details/${query}/${meal.id}`}}>View Detail</Link>
                             </button>
                         </div>
 

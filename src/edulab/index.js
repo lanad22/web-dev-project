@@ -11,6 +11,7 @@ import Login from "../users/login";
 import Profile from "../users/profile";
 import EditProfile from "../users/edit-profile";
 import ProtectedRoute from "../users/ProtectedRoute";
+import RecipeItem from "../recipes/RecipeItem";
 
 function EduLab(){
     return(
@@ -23,9 +24,10 @@ function EduLab(){
                         <Routes>
                         <Route index
                                element={<HomeComponent/>}/>
+                               <Route path="recipes/:id" element = {<RecipeItem/>}/>
                         <Route path="bookmarks" element ={<BookmarkComponent/>}/>
                         <Route path="search/:query" element = {<MealList/>}/>
-                        <Route path="meal/:id" element = {<Meal/>}/>
+                        <Route path="details/:query/:id" element = {<Meal/>}/>
                         <Route path="register" element = {<Register/>}/>
                         <Route path="login" element = {<Login/>}/>
                         <Route path="profile" element = {
