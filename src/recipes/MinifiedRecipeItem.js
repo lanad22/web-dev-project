@@ -29,21 +29,20 @@ const MinifiedRecipeItem = ({recipe}) => {
                                 pathname: `/recipes/${recipe._id}`}}>
                                 <i className="bi bi-three-dots text-black"></i></Link>
                         </div>
-                        {
-                            currentUser && currentUser.userType === 'moderator' &&
+
                             <div className='col-6 btn'>
                                 <i className="fa-regular fa-delete-left"
                                    onClick={() => deleteRecipeHandler(recipe._id)}
                                 ></i>
                             </div>
-                        }
+
                     </div>
                     <span className='text-capitalize fw-bold'>{recipe.chef.firstname} {recipe.chef.lastname}</span>
                     <i className="ps-2 fa-duotone fa-hat-chef"></i><br/>
                     {recipe.postedOn}
                     <div className = 'mt-2 mb-2 card'>
                         <img
-                            src = "/images/chicken.jpg"
+                            src = {`/images/${recipe.image}`}
                             className='card-img' alt="recipe"
                         />
                         <div className = 'p-2'>
@@ -51,7 +50,7 @@ const MinifiedRecipeItem = ({recipe}) => {
                                 {recipe.title}
                             </h4>
                             <p>
-                                Chicken pasta in a garlic tomato cream sauce is the ultimate comfort meal
+                                {recipe.title} is the ultimate comfort meal
                             </p>
                         </div>
                     </div>

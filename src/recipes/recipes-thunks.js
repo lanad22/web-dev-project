@@ -24,7 +24,7 @@ export const updateRecipeThunk = createAsyncThunk(
 
 export const createRecipeThunk = createAsyncThunk(
     'createRecipe', async (newRecipe) => {
-        return await service.createRecipe(newRecipe)
+        return await service.createRecipe(newRecipe.newRecipe, newRecipe.uID)
     }
 )
 export const findRecipeByIdThunk = createAsyncThunk(
@@ -34,5 +34,13 @@ export const deleteRecipeThunk = createAsyncThunk(
     'deleteRecipe', async(rId) => {
         await service.deleteRecipe(rId)
         return rId
+    }
+)
+
+export const findRecipeByDishIdThunk = createAsyncThunk(
+    'findRecipeByDishId', async(did) =>{
+        console.log(did)
+        await service.findRecipeByDishId(did)
+        return did
     }
 )

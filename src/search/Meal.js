@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {findResultByIdThunk} from "./search-thunks";
-import {createRecipeThunk} from "../recipes/recipes-thunks";
+import {createRecipeThunk, findRecipeByDishIdThunk} from "../recipes/recipes-thunks";
 import RecipeList from "../recipes/RecipeList";
+import MinifiedRecipeItem from "../recipes/MinifiedRecipeItem";
 
 const Meal = () => {
     const {id} = useParams();
@@ -18,13 +19,14 @@ const Meal = () => {
 
     useEffect(() => {
         dispatch(findResultByIdThunk(id))
+        dispatch(findRecipeByDishIdThunk(id))
     }, [id]);
 
     const handleCreateRecipeBtn = () => {
-        dispatch(createRecipeThunk({
-            newRecipe
-        }))
+        const newRecipeObj = {newRecipe:newRecipe,uID:currentUser._id}
+        dispatch(createRecipeThunk(newRecipeObj))
     }
+    console.log(recipes)
     return (
         <div className = 'p-3'>
             <div className = 'card w-50 m-auto'>
@@ -55,7 +57,11 @@ const Meal = () => {
                     <button onClick={handleCreateRecipeBtn}>Create a new recipe</button>
                 }
 
-                <RecipeList/>
+                {
+                    recipes
+                        .filter(recipe => recipe != null)
+                        .map(recipe => <MinifiedRecipeItem key={recipe._id} recipe={recipe} />)
+                }
             </div>
 
 

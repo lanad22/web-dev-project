@@ -4,7 +4,7 @@ import {
     createRecipeThunk,
     findRecipeByIdThunk,
     deleteRecipeThunk,
-    updateRecipeThink
+    findRecipeByDishIdThunk
 } from "./recipes-thunks";
 
 const initialState = {
@@ -31,6 +31,11 @@ const recipesReducer = createSlice({
         [deleteRecipeThunk.fulfilled]:
             (state, {payload}) => {
             state.recipes = state.recipes.filter(r => r._id !== payload)
+            }
+        ,
+        [findRecipeByDishIdThunk.fulfilled]:
+            (state, action) => {
+                state.recipes = state.recipes.filter(r => r.dishId === action.payload)
             }
     }
 })

@@ -44,7 +44,7 @@ const RecipeItem = () => {
 
                     <div className='mt-2 mb-2 ms-auto me-auto card w-75'>
                         <img
-                            src="/images/chicken.jpg"
+                            src={`/images/${searchedRecipe.image}`}
                             className='card-img' alt="recipe"
                         />
                         <div className='p-2'>
@@ -52,7 +52,7 @@ const RecipeItem = () => {
                                 {searchedRecipe.title}
                             </h4>
                             <p>
-                                Chicken pasta ?? in a garlic tomato cream sauce is the ultimate comfort meal
+                                {searchedRecipe.title} is the ultimate comfort meal
                             </p>
                             <div className = 'p-2'>
                                 <h5><i className="bi bi-cart4 pe-2 "></i>Ingredients</h5>

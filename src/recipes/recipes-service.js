@@ -14,8 +14,8 @@ export const findRecipeById = async (rid) => {
     return response.data;
 }
 
-export const createRecipe = async (newRecipe) => {
-    const response = await axios.post(`${BASE_URL}/users/me/recipes`, newRecipe);
+export const createRecipe = async (newRecipe, uID) => {
+    const response = await axios.post(`${BASE_URL}/users/${uID}/recipes`, newRecipe);
     const actualRecipe = response.data
     return actualRecipe
 }
@@ -35,5 +35,11 @@ export const deleteRecipe = async (rid) => {
 
 export const updateRecipe = async (recipe) => {
     const response = await axios.put(`${RECIPES_API}/${recipe._id}`, recipe)
+    return response.data
+}
+
+export const findRecipeByDishId = async (did) => {
+    const response = await axios.get(`${BASE_URL}/dishes/${did}/recipes`)
+    console.log(response.data)
     return response.data
 }
