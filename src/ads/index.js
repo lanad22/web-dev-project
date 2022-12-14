@@ -1,8 +1,6 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {findTrendingResultThunk} from "../search/search-thunks";
-import {Link} from "react-router-dom";
-
 
 const Ads = () => {
     const dispatch = useDispatch();

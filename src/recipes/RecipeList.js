@@ -9,7 +9,8 @@ const RecipeList = () => {
         dispatch(findAllRecipesThunk())
     }, [])
     const {recipes} = useSelector((state) => state.recipes)
-    const slicedRecipes = recipes.slice(0,5);
+    console.log(recipes)
+    //const slicedRecipes = recipes.slice(0,5);
     return(
         <>
             <ul className = 'p-5 list-group'>
@@ -18,7 +19,7 @@ const RecipeList = () => {
                     &&
                     <>
                     {
-                        slicedRecipes
+                        recipes
                         .filter(recipe => recipe != null)
                             .map(recipe => <MinifiedRecipeItem key={recipe._id} recipe={recipe} />)
                     }

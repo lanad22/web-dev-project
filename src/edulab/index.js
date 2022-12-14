@@ -19,6 +19,7 @@ import PublicUserLikedRecipes from "../users/public-user-liked-recipes";
 import PublicUserCommentedRecipes from "../users/public-user-commented-recipes";
 import PublicCookbook from "../cookbook/public-cookbook";
 import Upload from "../ingredients/upload";
+import CreateNewRecipe from "../CreateNewRecipe";
 
 function EduLab(){
     return(
@@ -35,6 +36,7 @@ function EduLab(){
                         <Route path="recipes/:id" element = {<RecipeItem/>}/>
                         <Route path="search/:query" element = {<MealList/>}/>
                         <Route path="details/:id" element = {<Meal/>}/>
+                        <Route path="details/:dishId/create-new-recipe" element = {<CreateNewRecipe/>}/>
                         <Route path="register" element = {<Register/>}/>
                         <Route path="login" element = {<Login/>}/>
                         <Route path="profile/liked/" element = {<ProtectedRoute>
