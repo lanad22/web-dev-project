@@ -13,11 +13,9 @@ const RecipeItem = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log("in dispatch");
         dispatch(findRecipeByIdThunk(id))
     }, [])
 
-    console.log(searchedRecipe)
     return (
 
         <div className='list-group-item'>
@@ -42,7 +40,7 @@ const RecipeItem = () => {
                     {searchedRecipe.postedOn}
 
                     <div className='mt-4 float-end'>
-                        <Stats/>
+                        <Stats _id={id} recipe={searchedRecipe}/>
                     </div>
 
                     <div className='mt-2 mb-2 ms-auto me-auto card w-75'>

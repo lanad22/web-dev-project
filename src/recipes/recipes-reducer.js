@@ -1,5 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {findAllRecipesThunk, createRecipeThunk, findRecipeByIdThunk, deleteRecipeThunk} from "./recipes-thunks";
+import {
+    findAllRecipesThunk,
+    createRecipeThunk,
+    findRecipeByIdThunk,
+    deleteRecipeThunk,
+    updateRecipeThink
+} from "./recipes-thunks";
 
 const initialState = {
     recipes: [],

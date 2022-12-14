@@ -6,6 +6,12 @@ export const findAllRecipesThunk = createAsyncThunk(
     'findAllRecipes', async () =>
         await service.findAllRecipes()
 )
+
+export const updateRecipeThunk = createAsyncThunk(
+    'updateRecipe', async (recipe) =>
+        await service.updateRecipe(recipe)
+)
+
 export const createRecipeThunk = createAsyncThunk(
     'createRecipe', async (newRecipe) => {
         return await service.createRecipe(newRecipe)

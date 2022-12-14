@@ -68,6 +68,12 @@ const Profile = () => {
                         Logout
                     </button>
 
+                    <ul>
+                        <li>Liked</li>
+                        <li>Commented</li>
+                        <li>CookBook</li>
+                    </ul>
+
                 </>
             }
 

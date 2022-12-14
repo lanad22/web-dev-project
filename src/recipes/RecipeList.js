@@ -6,7 +6,6 @@ import {findAllRecipesThunk} from "./recipes-thunks";
 const RecipeList = () => {
     const dispatch = useDispatch();
     useEffect(() => {
-        console.log('dispatch')
         dispatch(findAllRecipesThunk())
     }, [])
     const {recipes} = useSelector((state) => state.recipes)
