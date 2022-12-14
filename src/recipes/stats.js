@@ -15,7 +15,6 @@ const Stats = ({recipe}) => {
                        ...recipe,
                        likes: recipe.likes + 1
                    }))}>
-
                 </i>
             </p>
 

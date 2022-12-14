@@ -18,7 +18,7 @@ const CreateNewRecipe = () => {
     }
     return (
         <>
-            <Link to={`/details/${dishId}`}
+            <Link to={`/search/details/${dishId}`}
                   className = 'btn btn-primary rounded-pill'
                   onClick={handleSaveBtn}>
                 Save

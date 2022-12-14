@@ -38,7 +38,7 @@ const MinifiedRecipeItem = ({recipe}) => {
 
                     </div>
                     <span className='text-capitalize fw-bold'>{recipe.chef.firstname} {recipe.chef.lastname}</span>
-                    <i className="ps-2 fa-duotone fa-hat-chef"></i><br/>
+                    <i className=" fa-regular fa-user-chef ps-2"></i><br/>
                     {recipe.postedOn}
                     <div className = 'mt-2 mb-2 card'>
                         <img

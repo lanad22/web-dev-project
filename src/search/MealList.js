@@ -21,10 +21,9 @@ const MealList = () => {
             <div className='row'>
                 {results.results && results.results.map((meal) => {
                     return (
-
                         <div key={meal.title} className='p-4 col-4'>
                             <Link to={{
-                                pathname: `/details/${meal.id}`
+                                pathname: `/search/${query}/details/${meal.id}`
                             }}>
                                 <div className='card'>
                                     <img
