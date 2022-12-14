@@ -7,12 +7,14 @@ import UserReducer from "./users/user-reducer";
 import CurrentUser from "./users/current-user";
 import RecipesReducer from "./recipes/recipes-reducer";
 import ResultsReducer from "./search/search-reducer";
+import CookbookReducer from "./cookbook/cookbook-reducer";
 
 const store = configureStore({
     reducer: {
         users: UserReducer,
         recipes: RecipesReducer,
-        results: ResultsReducer
+        results: ResultsReducer,
+        cookbook: CookbookReducer
     }
 })
 

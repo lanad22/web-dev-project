@@ -8,10 +8,8 @@ const Ads = () => {
     const dispatch = useDispatch();
     const {trending} = useSelector((state) => state.results)
     useEffect(() => {
-        console.log('dispatch')
         dispatch(findTrendingResultThunk())
     }, [])
-    console.log(trending)
     return(
         <>
             <div className="p-2 list-group border border-light">

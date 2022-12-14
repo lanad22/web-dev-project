@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {addToCookbookThunk} from "./cookbook-thunks";
+import {addToCookbookThunk, getCookBookForUserThunk} from "./cookbook-thunks";
+import {getCookBookForUser} from "./cookbook-service";
 
 const initialState = {
     recipes: [],
@@ -14,6 +15,11 @@ const cookbookReducer = createSlice({
             (state, action) => {
                 state.cookbook.push(action.payload)
             },
+        [getCookBookForUserThunk.fulfilled]:
+            (state, action) => {
+                state.cookbook = action.payload;
+            },
+
     }
 })
 export default cookbookReducer.reducer;

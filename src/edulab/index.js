@@ -12,7 +12,12 @@ import EditProfile from "../users/edit-profile";
 import ProtectedRoute from "../users/ProtectedRoute";
 import RecipeItem from "../recipes/RecipeItem";
 import Cookbook from "../cookbook";
-import PublicProfile from "../users/publicprofile";
+import PublicProfile from "../users/public-profile";
+import UserLikedRecipes from "../users/user-liked-recipes";
+import UserCommentedRecipes from "../users/user-commented-recipes";
+import PublicUserLikedRecipes from "../users/public-user-liked-recipes";
+import PublicUserCommentedRecipes from "../users/public-user-commented-recipes";
+import PublicCookbook from "../cookbook/public-cookbook";
 
 function EduLab(){
     return(
@@ -22,6 +27,7 @@ function EduLab(){
             </div>
             <div className = 'mt-2 row'>
                 <div className = 'col-8 border border-light p-0'>
+
                         <Routes>
                         <Route index
                                element={<HomeComponent/>}/>
@@ -30,7 +36,14 @@ function EduLab(){
                         <Route path="details/:id" element = {<Meal/>}/>
                         <Route path="register" element = {<Register/>}/>
                         <Route path="login" element = {<Login/>}/>
+                        <Route path="profile/liked/" element = {<ProtectedRoute>
+                            <UserLikedRecipes/>
+                            </ProtectedRoute>}/>
+                        <Route path="profile/commented/" element = {<ProtectedRoute> <UserCommentedRecipes/></ProtectedRoute>} />
                         <Route path="profile/:uid" element = { <PublicProfile/>} />
+                        <Route path="profile/liked/:uid" element = { <PublicUserLikedRecipes/>} />
+                        <Route path="profile/commented/:uid" element = { <PublicUserCommentedRecipes/>} />
+                        <Route path="cookbook/:uid" element = { <PublicCookbook/>} />
                         <Route path="profile" element = {
                             <ProtectedRoute>
                                 <Profile/>

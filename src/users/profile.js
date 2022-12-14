@@ -1,8 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {logoutThunk} from "./user-thunks";
 import {Link, Navigate, useNavigate} from "react-router-dom";
-import React from "react";
-import {useParams} from "react-router";
+import React, {useEffect} from "react";
 
 const Profile = () => {
     const {currentUser} = useSelector((state) => state.users)
@@ -67,11 +66,12 @@ const Profile = () => {
                     <button className="ms-4 mt-2 btn btn-danger" onClick={handleLogout}>
                         Logout
                     </button>
-
+                    <br/>
+                    <br/>
                     <ul>
-                        <li>Liked</li>
-                        <li>Commented</li>
-                        <li>CookBook</li>
+                        <li><Link to="/cookbook">Cookbook</Link></li>
+                        <li><Link to="/profile/liked">Liked Recipes</Link></li>
+                        <li><Link to="/profile/commented">Commented On Recipes</Link></li>
                     </ul>
 
                 </>

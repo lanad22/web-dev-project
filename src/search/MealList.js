@@ -6,16 +6,13 @@ import {useDispatch, useSelector} from "react-redux";
 
 const MealList = () => {
     const {query} = useParams();
-    console.log(query)
     const dispatch = useDispatch();
     const {results} = useSelector((state) => state.results)
 
     useEffect(() => {
-        console.log('dispatch')
         dispatch(findAllResultsThunk(query))
     }, [])
 
-    console.log(results)
     return (
         <>
             <div className='pt-3 text-center'>

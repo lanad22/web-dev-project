@@ -7,3 +7,8 @@ export const addToCookbook = async (rid) => {
     const response = await api.post(`${BASE_URL}/api/cookbook/${rid}/users/me`)
     return response.data
 }
+
+export const getCookBookForUser = async (uid) => {
+    const response = await api.get(`${BASE_URL}/api/cookbook/users/${uid}`)
+    return response.data
+}

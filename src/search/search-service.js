@@ -4,7 +4,6 @@ const KEY = '3857cfd46a694bcba671969e6bf77753';
 
 export const findAllResults = async (query) => {
     const response = await axios.get(`${SEARCH_URL}/complexSearch?apiKey=${KEY}&query=${query}&number=6`);
-    console.log(response.data);
     const results = response.data;
     return results;
 }
@@ -14,6 +13,5 @@ export const findResultById = async (rid) => {
 }
 export const findTrendingResult = async() => {
     const response = await axios.get('https://api.spoonacular.com/recipes/random?apiKey=3857cfd46a694bcba671969e6bf77753&number=3&tags=christmas')
-    console.log(response.data);
     return response.data;
 }
