@@ -18,6 +18,7 @@ import UserCommentedRecipes from "../users/user-commented-recipes";
 import PublicUserLikedRecipes from "../users/public-user-liked-recipes";
 import PublicUserCommentedRecipes from "../users/public-user-commented-recipes";
 import PublicCookbook from "../cookbook/public-cookbook";
+import Upload from "../ingredients/upload";
 
 function EduLab(){
     return(
@@ -55,6 +56,10 @@ function EduLab(){
                         <Route path="editprofile" element = {
                             <ProtectedRoute>
                                 <EditProfile/>
+                            </ProtectedRoute>}/>
+                        <Route path="ingredient-upload" element = {
+                            <ProtectedRoute>
+                                <Upload/>
                             </ProtectedRoute>}/>
                     </Routes>
                 </div>
