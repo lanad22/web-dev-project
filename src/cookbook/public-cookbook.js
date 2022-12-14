@@ -3,23 +3,23 @@ import "./index.css";
 import MinifiedRecipeItem from "../recipes/MinifiedRecipeItem";
 import {useDispatch, useSelector} from "react-redux";
 import {getCookBookForUserThunk} from "./cookbook-thunks";
-
+import {useParams} from "react-router";
 const BookmarkComponent = () => {
+    const {uid} = useParams();
     const dispatch = useDispatch();
-    const {currentUser} = useSelector((state) => state.users)
     const {cookbook} = useSelector((state) => state.cookbook)
+    console.log("in pb ck")
     useEffect(() => {
-        dispatch(getCookBookForUserThunk(currentUser._id))
+        dispatch(getCookBookForUserThunk(uid))
     }, [])
 
     return(
         <>
-
             {
                 cookbook
                     .filter(item => item.bookmarkedRecipe != null)
                     .map(item =>
-                <MinifiedRecipeItem key={item.bookmarkedRecipe._id} recipe={item.bookmarkedRecipe}/>)
+                        <MinifiedRecipeItem key={item.bookmarkedRecipe._id} recipe={item.bookmarkedRecipe}/>)
 
             }
         </>

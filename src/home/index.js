@@ -4,6 +4,7 @@ import {useSelector} from "react-redux";
 
 const HomeComponent = () => {
     const {currentUser} = useSelector((state) => state.users)
+
     return (
         <>
             <div>

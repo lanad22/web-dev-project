@@ -6,10 +6,6 @@ import {addToCookbookThunk} from "../cookbook/cookbook-thunks";
 const Stats = ({recipe}) => {
     const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch();
-
-    console.log(recipe)
-    console.log("stats rid " + recipe._id);
-    console.log("stats rid " + recipe._id);
     return(
         <div>
             <p>

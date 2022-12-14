@@ -18,7 +18,6 @@ const Register = () => {
             return
         }
         setError(null)
-        console.log("123")
         const newUser = {firstname, lastname, email, password, userType}
         dispatch(registerThunk(newUser))
     }

@@ -7,7 +7,6 @@ import {Link} from "react-router-dom";
 
 const RecipeItem = () => {
     const {id} = useParams();
-    console.log(id)
     const {searchedRecipe} = useSelector((state) => state.recipes)
     const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch();

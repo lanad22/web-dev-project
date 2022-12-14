@@ -7,6 +7,16 @@ export const findAllRecipesThunk = createAsyncThunk(
         await service.findAllRecipes()
 )
 
+export const findAllLikedRecipesForUserThunk = createAsyncThunk(
+    'findAllLikedRecipesForUser', async (uid) =>
+        await service.findAllLikedRecipesForUser(uid)
+)
+
+export const findAllCommentedRecipesForUserThunk = createAsyncThunk(
+    'findAllCommentedRecipesForUser', async (uid) =>
+        await service.findAllCommentedRecipesForUser(uid)
+)
+
 export const updateRecipeThunk = createAsyncThunk(
     'updateRecipe', async (recipe) =>
         await service.updateRecipe(recipe)

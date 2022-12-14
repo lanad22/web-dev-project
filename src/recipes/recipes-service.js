@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {findAllLikedRecipesForUserThunk} from "./recipes-thunks";
 const BASE_URL = 'http://localhost:4000/api'
 const RECIPES_API = `${BASE_URL}/recipes`;
 
@@ -18,6 +19,15 @@ export const createRecipe = async (newRecipe) => {
     const actualRecipe = response.data
     return actualRecipe
 }
+
+export const findAllLikedRecipesForUser = async (uid) => {
+    //TODO: fill in
+}
+
+export const findAllCommentedRecipesForUser = async (uid) => {
+    //TODO: fill in
+}
+
 export const deleteRecipe = async (rid) => {
     const response = await axios.delete(`${RECIPES_API}/${rid}`)
     return response.data

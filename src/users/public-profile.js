@@ -6,7 +6,6 @@ import {findUserByIdThunk} from "./user-thunks";
 
 const PublicProfile = () => {
     const {uid} = useParams();
-    console.log(uid)
     useEffect(() => {
         dispatch(findUserByIdThunk(uid))
     }, [uid])
@@ -55,6 +54,13 @@ const PublicProfile = () => {
                         </div>
                     </div>
                     <br/>
+                    <br/>
+
+                    <ul>
+                        <li><Link to={`/cookbook/${uid}`}>Cookbook</Link></li>
+                        <li><Link to={`/profile/liked/${uid}`}>Liked Recipes</Link></li>
+                        <li><Link to={`/profile/commented/${uid}`}>Commented On Recipes</Link></li>
+                    </ul>
 
                 </>
             }

@@ -25,7 +25,6 @@ const Meal = () => {
             newRecipe
         }))
     }
-    console.log(currentUser)
     return (
         <div className = 'p-3'>
             <div className = 'card w-50 m-auto'>

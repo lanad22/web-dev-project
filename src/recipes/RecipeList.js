@@ -14,8 +14,15 @@ const RecipeList = () => {
         <>
             <ul className = 'p-5 list-group'>
                 {
-                    slicedRecipes.map(recipe =>
-                        <MinifiedRecipeItem key={recipe._id} recipe={recipe} />)
+                    recipes.length !== 0
+                    &&
+                    <>
+                    {
+                        slicedRecipes
+                        .filter(recipe => recipe != null)
+                            .map(recipe => <MinifiedRecipeItem key={recipe._id} recipe={recipe} />)
+                    }
+                    </>
                 }
             </ul>
         </>

@@ -4,13 +4,14 @@ import {Link} from "react-router-dom";
 
 const MinifiedRecipeItem = ({recipe}) => {
     const {currentUser} = useSelector((state) => state.users)
-    const {recipes} = useSelector((state) => state.recipes)
     const dispatch = useDispatch()
     const deleteRecipeHandler = (id) => {
         dispatch(deleteRecipeThunk(id))
     }
-    console.log(recipes)
     return (
+        recipe
+        &&
+        <>
         <li key = {recipe._id} className = 'list-group-item'>
             <div className = 'row'>
                 <div className="float-start col-auto">
@@ -57,6 +58,7 @@ const MinifiedRecipeItem = ({recipe}) => {
                 </div>
             </div>
         </li>
+        </>
     )
 }
 

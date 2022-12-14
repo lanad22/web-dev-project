@@ -39,7 +39,7 @@ const usersReducer = createSlice({
         [profileThunk.fulfilled]: (state, action) => {
             state.currentUser = action.payload
         },
-        [profileThunk.fulfilled]: (state, action) => {
+        [editProfileThunk.fulfilled]: (state, action) => {
             state.currentUser = action.payload
         },
     }
