@@ -8,6 +8,7 @@ import {useSelector} from "react-redux";
 const NavigationComponent = () => {
     const {pathname} = useLocation();
     const {currentUser} = useSelector((state) => state.users)
+    console.log(currentUser)
     return (
             <div className= 'row'>
                 <div className = 'col-auto pt-2 pe-0 ps-0'>
@@ -50,6 +51,16 @@ const NavigationComponent = () => {
                                     <div className="text-black p-0">Register</div>
                                 </Link>
                             </>
+                        }
+                        {
+                            currentUser
+                            &&
+                            currentUser.userType.toString().toLowerCase() === 'staff'
+                            &&
+                            <Link to='/ingredient-upload' className = {`nav-item  ${pathname === '/ingredient-upload'?'active override-bs':''}`}>
+                                <i className='bi bi-upload ps-4 pb-0 fs-4 text-black'></i>
+                                <div className="text-black p-0">Upload</div>
+                            </Link>
                         }
                     </ul>
                 </div>
