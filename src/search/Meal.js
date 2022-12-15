@@ -52,6 +52,7 @@ const Meal = () => {
                             <i className="fa-solid fa-link pe-2"></i>
                             <u><a href={detail.sourceUrl} className='text-black'>{detail.sourceUrl}</a></u>
                         </li>
+
                     </ul>
                 </div>
             </div>

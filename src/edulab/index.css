@@ -1,4 +1,6 @@
-
+body{
+    font-family: "Times New Roman", Times, serif;
+}
 .wd-nudge-up {
     bottom: 32px;
     left: 20px;
@@ -15,5 +17,6 @@ a:Link{
     text-decoration: none;
 }
 .wd-background{
-    background-color: darkgrey;
+    background-color: darkgrey !important;
+    font-style: italic;
 }

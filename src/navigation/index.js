@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.css";
+import "../edulab/index.css";
 import {Link} from "react-router-dom";
 import {useLocation} from "react-router";
 import Search from "../search/Search";

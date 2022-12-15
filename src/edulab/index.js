@@ -21,6 +21,7 @@ import PublicCookbook from "../cookbook/public-cookbook";
 import Upload from "../ingredients/upload";
 import CreateNewRecipe from "../CreateNewRecipe";
 import CurrentUser from "../users/current-user";
+import './index.css';
 
 function EduLab(){
     return(

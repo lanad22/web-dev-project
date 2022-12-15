@@ -6,15 +6,15 @@ import {uploadIngredientsThunk} from "./ingredients-thunks";
 
 const Upload = () => {
     const [name, setName] = useState('')
-    const [calorie, setCalorie] = useState('')
+    const [calories, setCalories] = useState('')
     const [protein, setProtein] = useState('')
     const [fat, setFat] = useState('')
-    const [carbohydrate, setCarbohydrate] = useState('')
+    const [carbs, setCarbs] = useState('')
     const {currentUser} = useSelector((state) => state.users)
     const {uploaded} = useSelector((state) => state.ingredients)
     const dispatch = useDispatch()
     const handleUploadBtn = () => {
-        const item = {name, calorie, protein, fat, carbohydrate}
+        const item = {name, calories, fat, protein, carbs}
         dispatch(uploadIngredientsThunk(item))
     }
     return (
@@ -39,8 +39,8 @@ const Upload = () => {
         <label>Calorie(kcal)</label>
         <input
             className="form-control mb-2"
-            value={calorie}
-            onChange={(e) => setCalorie(e.target.value)}/>
+            value={calories}
+            onChange={(e) => setCalories(e.target.value)}/>
         <label>Protein(g)</label>
         <input
             className="form-control mb-2"
@@ -54,8 +54,8 @@ const Upload = () => {
         <label>Carbohydrates(g)</label>
         <input
             className="form-control mb-2"
-            value={carbohydrate}
-            onChange={(e) => setCarbohydrate(e.target.value)}/>
+            value={carbs}
+            onChange={(e) => setCarbs(e.target.value)}/>
 
         <button
             onClick={handleUploadBtn}
