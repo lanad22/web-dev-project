@@ -13,6 +13,7 @@ const Meal = () => {
     const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch()
 
+    console.log(recipes)
 
     useEffect(() => {
         dispatch(findResultByIdThunk(id))

@@ -83,3 +83,9 @@ export const findRecipeByDishId = async (did) => {
     const response = await axios.get(`${BASE_URL}/dishes/${did}/recipes`)
     return response.data
 }
+
+export const findAllRecipesByUser = async (uID) => {
+    const response = await axios.get(`${BASE_URL}/users/${uID}/recipes`);
+    return response.data
+
+}

@@ -8,14 +8,28 @@ import {findIngredientsThunk} from "./ingredients/ingredients-thunks";
 const CreateNewRecipe = () => {
     const {query, dishId} = useParams()
     const dispatch = useDispatch()
+
+
     const [title, setTitle] = useState('')
-    const [step, setStep] = useState([])
-    const newRecipe = {title, step, dishId}
+
+    const [summary, setSummary] = useState('')
+
+    const [step1, setStep1] = useState('')
+    const [step2, setStep2] = useState('')
+    const [step3, setStep3] = useState('')
+    const [step4, setStep4] = useState('')
+
+    const steps = [step1, step2, step3, step4]
+    const [ingredients, setIngredients] = useState([])
+
     const {currentUser} = useSelector((state) => state.users)
     const [name, setName] = useState('')
     const {found} = useSelector((state) => state.ingredients)
 
     const search = found[0]
+
+    const newRecipe = {title, steps, dishId, ingredients, summary}
+    console.log(newRecipe)
 
     const handleSearchBtn = (name) => {
         dispatch(findIngredientsThunk(name))
@@ -23,6 +37,9 @@ const CreateNewRecipe = () => {
     const handleSaveBtn = () => {
         const newRecipeObj = {newRecipe: newRecipe, uID: currentUser._id}
         dispatch(createRecipeThunk(newRecipeObj))
+    }
+    const addIngredientBtn = (search) => {
+        setIngredients(ingredients => [...ingredients, search])
     }
     return (
         <div className='p-3'>
@@ -45,7 +62,7 @@ const CreateNewRecipe = () => {
                     <textarea className='mt-2 form-control w-75 m-auto'
                               id='summary'
                               placeholder='Short description about the recipe'
-                              onChange={(e) => setTitle(e.target.value)}
+                              onChange={(e) => setSummary(e.target.value)}
                     />
                 </div>
                 <div className='p-4 list-group-item'>
@@ -54,21 +71,25 @@ const CreateNewRecipe = () => {
                         <li className='list-group-item'>
                             <input className='ms-5 form-control border-0 w-75'
                                    placeholder='step 1'
+                                   onChange={(e) => setStep1(e.target.value)}
                             />
                         </li>
                         <li className='list-group-item'>
                             <input className='ms-5 form-control border-0 w-75'
                                    placeholder='step 2'
+                                   onChange={(e) => setStep2(e.target.value)}
                             />
                         </li>
                         <li className='list-group-item'>
                             <input className='ms-5 form-control border-0 w-75'
                                    placeholder='step 3'
+                                   onChange={(e) => setStep3(e.target.value)}
                             />
                         </li>
                         <li className='list-group-item'>
                             <input className='ms-5 form-control border-0 w-75'
                                    placeholder='step 4'
+                                   onChange={(e) => setStep4(e.target.value)}
                             />
                         </li>
                     </ul>
@@ -103,10 +124,13 @@ const CreateNewRecipe = () => {
                                     <li className='list-group-item'>{search.carbs} of carbohydrate</li>
                                 </ul>
                                 <div className='pt-4 text-center'>
-                                    <button className='btn border-secondary'>
+                                    <button className='btn border-secondary'
+                                            onClick = {() => addIngredientBtn(search)}
+                                    >
                                         <i className="fa-solid fa-plus-large pe-2"></i>
                                         Add {search.name} to your recipe
                                     </button>
+
                                 </div>
 
 

@@ -1,10 +1,9 @@
 import {useDispatch, useSelector} from "react-redux";
-import {deleteRecipeThunk} from "./recipes-thunks";
 import {Link} from "react-router-dom";
 
 const MinifiedRecipeItem = ({recipe}) => {
-    const {currentUser} = useSelector((state) => state.users)
-    const dispatch = useDispatch()
+    //const {currentUser} = useSelector((state) => state.users)
+    //const dispatch = useDispatch()
     return (
         recipe
         &&

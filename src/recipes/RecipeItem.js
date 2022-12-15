@@ -70,6 +70,7 @@ const RecipeItem = () => {
         dispatch(dislikeRecipeThunk(item))
     }
 
+    console.log(searchedRecipe)
     return (
         <div className='list-group-item'>
             <div className='row'>
@@ -159,18 +160,17 @@ const RecipeItem = () => {
                             </p>
                             <div className = 'p-2'>
                                 <h5><i className="bi bi-cart4 pe-2 "></i>Ingredients</h5>
-                                <li>
-                                    1
-                                </li>
-                                <li>
-                                    2
-                                </li>
+                                {
+                                    searchedRecipe.ingredients && searchedRecipe.ingredients.map((ingredient) => (
+                                        <li> {ingredient.name}</li>
+                                    ))
+                                }
                             </div>
                             <div className = 'p-2'>
                                 <h5><i className="bi bi-journal-text pe-2"></i>Steps</h5>
                                 {
                                     searchedRecipe.steps && searchedRecipe.steps.map((step) => (
-                                        <li>{step}</li>
+                                        <li> {step}</li>
                                     ))
                                 }
                             </div>

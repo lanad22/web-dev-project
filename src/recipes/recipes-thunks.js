@@ -89,3 +89,9 @@ export const findRecipeByDishIdThunk = createAsyncThunk(
         return did
     }
 )
+
+export const findAllRecipesByUserThunk = createAsyncThunk(
+    'findAllRecipesByUser', async (uID) => {
+        return await service.findAllRecipesByUser(uID)
+    }
+)
