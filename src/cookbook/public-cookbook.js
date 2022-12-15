@@ -8,7 +8,6 @@ const BookmarkComponent = () => {
     const {uid} = useParams();
     const dispatch = useDispatch();
     const {cookbook} = useSelector((state) => state.cookbook)
-    console.log("in pb ck")
     useEffect(() => {
         dispatch(getCookBookForUserThunk(uid))
     }, [])

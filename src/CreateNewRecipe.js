@@ -20,7 +20,6 @@ const CreateNewRecipe = () => {
     const handleSearchBtn = (name) => {
         dispatch(findIngredientsThunk(name))
     }
-    console.log(search)
     const handleSaveBtn = () => {
         const newRecipeObj = {newRecipe: newRecipe, uID: currentUser._id}
         dispatch(createRecipeThunk(newRecipeObj))
