@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+    findIngredientsThunk,
     uploadIngredientsThunk
 
 } from "./ingredients-thunks";
 
 const initialState = {
-    ingredient: [],
+    ingredients: [],
+    found: {},
     uploaded: false
 }
 const ingredientsReducer = createSlice({
@@ -14,8 +16,14 @@ const ingredientsReducer = createSlice({
     extraReducers: {
         [uploadIngredientsThunk.fulfilled]:
             (state, action) => {
+                state.ingredients.push(action.payload)
                 state.uploaded = true
             },
+        [findIngredientsThunk.fulfilled]:
+            (state, action) => {
+                state.found = action.payload
+            }
     }
 })
 export default ingredientsReducer.reducer;
+

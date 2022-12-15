@@ -1,7 +1,11 @@
 import axios from 'axios';
-const BASE_URL = 'http://localhost:4000/api'
+const BASE_URL = 'http://localhost:4000/api/ingredients'
 
-export const uploadIngredients = async (item) => {
-    //const response = await axios.post(`${BASE_URL}/users/me/recipes`, newRecipe); //TODO: replace with real api call
-    return item;
+export const uploadIngredients = async (newIngredient) => {
+    const response = await axios.post(`${BASE_URL}`, newIngredient);
+    return response.data;
+}
+export const findIngreients = async (name) => {
+    const response = await axios.get(`${BASE_URL}?name=${name}`);
+    return response.data;
 }
