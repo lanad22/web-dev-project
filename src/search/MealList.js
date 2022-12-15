@@ -22,9 +22,7 @@ const MealList = () => {
                 {results.results && results.results.map((meal) => {
                     return (
                         <div key={meal.title} className='p-4 col-4'>
-                            <Link to={{
-                                pathname: `/search/${query}/details/${meal.id}`
-                            }}>
+                            <Link to={`/search/${query}/details/${meal.id}`}>
                                 <div className='card'>
                                     <img
                                         src={meal.image}

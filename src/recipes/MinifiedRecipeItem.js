@@ -25,8 +25,7 @@ const MinifiedRecipeItem = ({recipe}) => {
                 <div className="col-10">
                     <div className = 'row float-end'>
                         <div className = 'col-6 btn pe-0'>
-                            <Link to={{
-                                pathname: `/recipes/${recipe._id}`}}>
+                            <Link to={`/recipes/${recipe._id}`}>
                                 <i className="bi bi-three-dots text-black"></i></Link>
                         </div>
 

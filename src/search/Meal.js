@@ -24,8 +24,7 @@ const Meal = () => {
     console.log(recipes)
     return (
         <div className='p-3 row'>
-            <Link to={{
-                pathname: `/search/${query}`}}>
+            <Link to={`/search/${query}`}>
                 <i className="fa-solid fa-arrow-left-long text-black fs-5"></i>
             </Link>
 
