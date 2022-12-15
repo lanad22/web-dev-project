@@ -3,14 +3,14 @@ import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {
     addCommentThunk,
-    bookmarkRecipeThunk,
+    bookmarkRecipeThunk, deleteRecipeThunk,
     dislikeRecipeThunk, findCommentsForRecipeThunk,
     findRecipeByIdThunk, isRecipeBookmarkedByUserThunk,
     isRecipeLikedByUserThunk,
     likeRecipeThunk, unbookmarkRecipeThunk,
     updateRecipeThunk
 } from "./recipes-thunks";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const RecipeItem = () => {
     const {id} = useParams();
@@ -26,13 +26,19 @@ const RecipeItem = () => {
     }
     const {isLiked} = useSelector((state) => state.recipes)
     const {isBookmarked} = useSelector((state) => state.recipes)
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(isRecipeLikedByUserThunk(item))
         dispatch(isRecipeBookmarkedByUserThunk(item))
         dispatch(findRecipeByIdThunk(id))
         item != null &&dispatch(findCommentsForRecipeThunk(item.rid))
-    },[searchedRecipe.numberOfLikes, isLiked, isBookmarked, comments.length])
+    },[id,searchedRecipe.numberOfLikes, isLiked, isBookmarked, comments.length])
+
+    const deleteRecipeHandler = (id) => {
+        dispatch(deleteRecipeThunk(id))
+        navigate('/')
+    }
 
     const likeButtonHandler = () => {
         dispatch(updateRecipeThunk({
@@ -73,7 +79,7 @@ const RecipeItem = () => {
                         <Link to={`/profile/${searchedRecipe.chef._id}`}>
                             <img width={50}
                                  alt='...' className="float-end rounded-circle"
-                                 src='/images/owl.jpeg'/>
+                                 src={searchedRecipe.chef.profilePhoto}/>
                         </Link>
                     }
 
@@ -87,14 +93,14 @@ const RecipeItem = () => {
                     {searchedRecipe.postedOn}
 
                     {
-                        currentUser
+                        currentUser && searchedRecipe.chef!==undefined
                         &&
                         <div className='mt-4 float-end'>
                             <p>
                                 {
                                     !isLiked
                                     &&
-                                    <i className="bi bi-heart pe-2 fs-5 pb-3"
+                                    <i className="bi bi-heart pe-2 fs-5 pb-3 ms-1"
                                        onClick={() => likeButtonHandler()}>
                                         {searchedRecipe.numberOfLikes}
                                     </i>
@@ -102,30 +108,40 @@ const RecipeItem = () => {
                                 {
                                     isLiked
                                     &&
-                                    <i className="bi bi-heart-fill pe-2 fs-5 pb-3 text-danger"
+                                    <i className="bi bi-heart-fill pe-2 fs-5 pb-3 ms-1 text-danger"
                                        onClick={() => disLikeButtonHandler()}>
                                         {searchedRecipe.numberOfLikes}
                                     </i>
                                 }
 
                             </p>
-
                             <p>
                                 {
                                     !isBookmarked
                                     &&
-                                    <i className="bi bi-book pe-2 fs-5 pb-3"
+                                    <i className="bi bi-book pe-2 fs-5 ms-1 pb-3"
                                        onClick={() => bookmarkButtonHandler()}>
                                     </i>
                                 }
                                 {
                                     isBookmarked
                                     &&
-                                    <i className="bi bi-book-fill pe-2 fs-5 pb-3 text-success"
+                                    <i className="bi bi-book-fill pe-2 fs-5 pb-3 ms-1 text-success"
                                        onClick={() => unbookmarkButtonHandler()}>
                                     </i>
                                 }
 
+                            </p>
+                            <p>
+                                {
+                                    (currentUser.userType.toLowerCase() === "staff"
+                                    ||
+                                    currentUser._id === searchedRecipe.chef._id)
+                                    &&
+                                    <i className="fa-regular fa-delete-left pe-2 fs-5 pb-3 mt-1 ps-0 fw-light"
+                                       onClick={() => deleteRecipeHandler(searchedRecipe._id)}>
+                                    </i>
+                                }
                             </p>
                         </div>
                     }

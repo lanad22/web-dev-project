@@ -20,7 +20,6 @@ const Meal = () => {
     }, [id]);
 
 
-    console.log(recipes)
     return (
         <div className='p-3 row'>
             <Link to={`/search/${query}`}>

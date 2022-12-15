@@ -5,9 +5,6 @@ import {Link} from "react-router-dom";
 const MinifiedRecipeItem = ({recipe}) => {
     const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch()
-    const deleteRecipeHandler = (id) => {
-        dispatch(deleteRecipeThunk(id))
-    }
     return (
         recipe
         &&
@@ -28,12 +25,6 @@ const MinifiedRecipeItem = ({recipe}) => {
                             <Link to={`/recipes/${recipe._id}`}>
                                 <i className="bi bi-three-dots text-black"></i></Link>
                         </div>
-
-                            <div className='col-6 btn'>
-                                <i className="fa-regular fa-delete-left"
-                                   onClick={() => deleteRecipeHandler(recipe._id)}
-                                ></i>
-                            </div>
 
                     </div>
                     <span className='text-capitalize fw-bold'>{recipe.chef.firstname} {recipe.chef.lastname}</span>

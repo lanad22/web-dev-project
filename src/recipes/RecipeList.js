@@ -9,9 +9,7 @@ const RecipeList = () => {
         dispatch(findAllRecipesThunk())
     }, [])
     const {recipes} = useSelector((state) => state.recipes)
-    //console.log(recipes)
     window.localStorage.setItem('recipes', JSON.stringify(recipes));
-    //const slicedRecipes = recipes.slice(0,5);
     return(
         <>
             <ul className = 'p-5 list-group'>

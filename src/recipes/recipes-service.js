@@ -27,7 +27,6 @@ export const findCommentsForRecipe = async(rid) => {
 
 export const addComment = async(item) => {
     const response = await axios.post(`${BASE_URL}/comments/${item.recipe}/users/${item.postedBy}`, item)
-    console.log(response.data)
     return response.data
 }
 

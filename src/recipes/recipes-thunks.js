@@ -85,7 +85,6 @@ export const deleteRecipeThunk = createAsyncThunk(
 
 export const findRecipeByDishIdThunk = createAsyncThunk(
     'findRecipeByDishId', async(did) =>{
-        console.log(did)
         await service.findRecipeByDishId(did)
         return did
     }

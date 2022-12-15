@@ -8,7 +8,6 @@ import {useSelector} from "react-redux";
 const NavigationComponent = () => {
     const {pathname} = useLocation();
     const {currentUser} = useSelector((state) => state.users)
-    console.log(currentUser)
     return (
             <div className= 'row'>
                 <div className = 'd-none d-md-block col-md-1 col-lg-1 col-xl-1 col-xxl-1 pt-2 pe-0'>
