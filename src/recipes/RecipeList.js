@@ -9,7 +9,8 @@ const RecipeList = () => {
         dispatch(findAllRecipesThunk())
     }, [])
     const {recipes} = useSelector((state) => state.recipes)
-    console.log(recipes)
+    //console.log(recipes)
+    window.localStorage.setItem('recipes', JSON.stringify(recipes));
     //const slicedRecipes = recipes.slice(0,5);
     return(
         <>

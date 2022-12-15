@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import React, { useState } from "react";
 
 const CreateNewRecipe = () => {
-    const {dishId} = useParams()
+    const {query, dishId} = useParams()
     const dispatch = useDispatch()
     const [title, setTitle] = useState('Chicken Pasta')
     const [step, setStep] = useState([])
@@ -18,7 +18,7 @@ const CreateNewRecipe = () => {
     }
     return (
         <>
-            <Link to={`/search/details/${dishId}`}
+            <Link to={`/search/${query}/details/${dishId}`}
                   className = 'btn btn-primary rounded-pill'
                   onClick={handleSaveBtn}>
                 Save

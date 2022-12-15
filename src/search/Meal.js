@@ -7,8 +7,7 @@ import MinifiedRecipeItem from "../recipes/MinifiedRecipeItem";
 import {Link} from "react-router-dom";
 
 const Meal = () => {
-    const {query,id} = useParams();
-    console.log(query)
+    const {query, id} = useParams();
     const {detail} = useSelector((state) => state.results)
     const {recipes} = useSelector((state) => state.recipes)
     const {currentUser} = useSelector((state) => state.users)
@@ -68,17 +67,19 @@ const Meal = () => {
                                 <MinifiedRecipeItem key={recipe._id} recipe={recipe}/>
                             )
                     }
-                    <div className = 'text-center fw-bold'>
-                    {
-
-                        currentUser &&
-                        <Link to={`/details/${detail.id}/create-new-recipe`}
-                              className='list-group-item'>
-                            ...<br/>
-                            Create a new recipe<br/>
-                            <i className="fa-regular fa-layer-plus fs-4"></i>
-                        </Link>
-                    }
+                    <div className='text-center fw-bold'>
+                        {
+                            currentUser &&
+                            <Link to=
+                                      {{
+                                          pathname: `/search/${query}/details/${detail.id}/create-new-recipe`
+                                      }}
+                                  className='list-group-item'>
+                                ...<br/>
+                                Create a new recipe<br/>
+                                <i className="fa-regular fa-layer-plus fs-4"></i>
+                            </Link>
+                        }
                     </div>
                 </div>
             </div>

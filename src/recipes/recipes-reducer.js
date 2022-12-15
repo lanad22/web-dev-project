@@ -43,6 +43,7 @@ const recipesReducer = createSlice({
         ,
         [findRecipeByDishIdThunk.fulfilled]:
             (state, action) => {
+                state.recipes = state.recipes.length === 0 ? JSON.parse(window.localStorage.getItem('recipes')) :state.recipes
                 state.recipes = state.recipes.filter(r => r.dishId === action.payload)
             },
         [updateRecipeThunk.fulfilled]:

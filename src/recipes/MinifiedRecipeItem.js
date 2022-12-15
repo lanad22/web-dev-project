@@ -49,7 +49,7 @@ const MinifiedRecipeItem = ({recipe}) => {
                                 {recipe.title}
                             </h4>
                             <p>
-                                {recipe.title} is the ultimate comfort meal
+                                {recipe.summary}
                             </p>
                         </div>
                     </div>

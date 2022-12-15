@@ -41,7 +41,7 @@ function EduLab(){
                         }/>
                         <Route path="search/:query" element = {<MealList/>}/>
                         <Route path="search/:query/details/:id" element = {<Meal/>}/>
-                        <Route path="details/:dishId/create-new-recipe" element = {<CreateNewRecipe/>}/>
+                        <Route path="search/:query/details/:dishId/create-new-recipe" element = {<CreateNewRecipe/>}/>
                         <Route path="register" element = {<Register/>}/>
                         <Route path="login" element = {<Login/>}/>
                         <Route path="profile/liked/" element = {<ProtectedRoute>

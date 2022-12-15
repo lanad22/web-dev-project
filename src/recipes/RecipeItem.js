@@ -132,7 +132,7 @@ const RecipeItem = () => {
                                 {searchedRecipe.title}
                             </h4>
                             <p>
-                                {searchedRecipe.title} is the ultimate comfort meal
+                                {searchedRecipe.summary}
                             </p>
                             <div className = 'p-2'>
                                 <h5><i className="bi bi-cart4 pe-2 "></i>Ingredients</h5>
