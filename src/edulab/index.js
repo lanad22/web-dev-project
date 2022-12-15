@@ -20,6 +20,7 @@ import PublicUserCommentedRecipes from "../users/public-user-commented-recipes";
 import PublicCookbook from "../cookbook/public-cookbook";
 import Upload from "../ingredients/upload";
 import CreateNewRecipe from "../CreateNewRecipe";
+import CurrentUser from "../users/current-user";
 
 function EduLab(){
     return(
@@ -33,7 +34,11 @@ function EduLab(){
                         <Routes>
                         <Route index
                                element={<HomeComponent/>}/>
-                        <Route path="recipes/:id" element = {<RecipeItem/>}/>
+                        <Route path="recipes/:id" element = {
+                            <CurrentUser>
+                                <RecipeItem/>
+                            </CurrentUser>
+                        }/>
                         <Route path="search/:query" element = {<MealList/>}/>
                         <Route path="search/:query/details/:id" element = {<Meal/>}/>
                         <Route path="details/:dishId/create-new-recipe" element = {<CreateNewRecipe/>}/>

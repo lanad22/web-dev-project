@@ -7,6 +7,42 @@ export const findAllRecipesThunk = createAsyncThunk(
         await service.findAllRecipes()
 )
 
+export const isRecipeLikedByUserThunk = createAsyncThunk(
+    'isRecipeLikedByUser', async (item) =>
+        await service.isRecipeLikedByUser(item.rid, item.uid)
+)
+
+export const isRecipeBookmarkedByUserThunk = createAsyncThunk(
+    'isRecipeBookmarkedByUser', async (item) =>
+        await service.isRecipeBookmarkedByUser(item.rid, item.uid)
+)
+
+export const likeRecipeThunk = createAsyncThunk(
+    'likeRecipe', async (item) => {
+        await service.likeRecipe(item.rid, item.uid)
+    }
+)
+
+export const dislikeRecipeThunk = createAsyncThunk(
+    'dislikeRecipe', async (item) => {
+        await service.dislikeRecipe(item.rid, item.uid)
+    }
+)
+
+export const bookmarkRecipeThunk = createAsyncThunk(
+    'bookmarkRecipe', async (item) => {
+        await service.bookmarkRecipe(item.rid, item.uid)
+    }
+)
+
+export const unbookmarkRecipeThunk = createAsyncThunk(
+    'unbookmarkRecipe', async (item) => {
+        await service.unbookmarkRecipe(item.rid, item.uid)
+    }
+)
+
+
+
 export const findAllLikedRecipesForUserThunk = createAsyncThunk(
     'findAllLikedRecipesForUser', async (uid) =>
         await service.findAllLikedRecipesForUser(uid)

@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {findAllLikedRecipesForUserThunk} from "./recipes-thunks";
 const BASE_URL = 'http://localhost:4000/api'
 const RECIPES_API = `${BASE_URL}/recipes`;
 
@@ -7,6 +6,37 @@ export const findAllRecipes = async () => {
     const response = await axios.get(RECIPES_API);
     const recipes = response.data;
     return recipes;
+}
+
+export const isRecipeLikedByUser = async(rid, uid) => {
+    const response = await axios.get(`${BASE_URL}/likes/${rid}/users/${uid}`)
+
+    return response.data
+}
+
+export const bookmarkRecipe = async(rid, uid) => {
+    const response = await axios.post(`${BASE_URL}/cookbook/${rid}/users/${uid}`)
+    return response.data
+}
+
+export const unbookmarkRecipe = async(rid, uid) => {
+    const response = await axios.delete(`${BASE_URL}/cookbook/${rid}/users/${uid}`)
+    return response.data
+}
+
+export const isRecipeBookmarkedByUser = async(rid, uid) => {
+    const response = await axios.get(`${BASE_URL}/cookbook/${rid}/users/${uid}`)
+    return response.data
+}
+
+export const likeRecipe = async (rid, uid) => {
+    const response = await axios.post(`${BASE_URL}/likes/${rid}/users/${uid}`)
+    return response.data
+}
+
+export const dislikeRecipe = async (rid, uid) => {
+    const response = await axios.delete(`${BASE_URL}/likes/${rid}/users/${uid}`)
+    return response.data
 }
 
 export const findRecipeById = async (rid) => {
@@ -35,6 +65,7 @@ export const deleteRecipe = async (rid) => {
 
 export const updateRecipe = async (recipe) => {
     const response = await axios.put(`${RECIPES_API}/${recipe._id}`, recipe)
+    console.log(response)
     return response.data
 }
 

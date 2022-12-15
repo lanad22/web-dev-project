@@ -1,22 +1,64 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
-import Stats from "./stats";
-import {findRecipeByIdThunk} from "./recipes-thunks";
+import {
+    bookmarkRecipeThunk,
+    dislikeRecipeThunk,
+    findRecipeByIdThunk, isRecipeBookmarkedByUserThunk,
+    isRecipeLikedByUserThunk,
+    likeRecipeThunk, unbookmarkRecipeThunk,
+    updateRecipeThunk
+} from "./recipes-thunks";
 import {Link} from "react-router-dom";
+import {addToCookbookThunk} from "../cookbook/cookbook-thunks";
 
 const RecipeItem = () => {
     const {id} = useParams();
-    const {searchedRecipe} = useSelector((state) => state.recipes)
-    const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch();
 
+    const {searchedRecipe} = useSelector((state) => state.recipes)
+    const {currentUser} = useSelector((state) => state.users)
+    let item = null;
+    if(currentUser !== null) {
+        item = {rid: searchedRecipe._id, uid:currentUser._id}
+    }
+    const {isLiked} = useSelector((state) => state.recipes)
+    const {isBookmarked} = useSelector((state) => state.recipes)
+    console.log(isLiked)
+
     useEffect(() => {
+        dispatch(isRecipeLikedByUserThunk(item))
+        dispatch(isRecipeBookmarkedByUserThunk(item))
         dispatch(findRecipeByIdThunk(id))
-    }, [])
+    },[searchedRecipe.numberOfLikes, isLiked, isBookmarked])
+
+
+
+    const likeButtonHandler = () => {
+        dispatch(updateRecipeThunk({
+            ...searchedRecipe,
+            numberOfLikes: searchedRecipe.numberOfLikes + 1
+        }))
+        dispatch(likeRecipeThunk(item))
+    }
+
+    const bookmarkButtonHandler = () => {
+        dispatch(bookmarkRecipeThunk(item))
+    }
+
+    const unbookmarkButtonHandler = () => {
+        dispatch(unbookmarkRecipeThunk(item))
+    }
+
+    const disLikeButtonHandler = () => {
+        dispatch(updateRecipeThunk({
+            ...searchedRecipe,
+            numberOfLikes: searchedRecipe.numberOfLikes - 1
+        }))
+        dispatch(dislikeRecipeThunk(item))
+    }
 
     return (
-
         <div className='list-group-item'>
             <div className='row'>
                 <div className="float-start col-auto">
@@ -38,10 +80,48 @@ const RecipeItem = () => {
                     }
                     {searchedRecipe.postedOn}
 
-                    <div className='mt-4 float-end'>
-                        <Stats _id={id} recipe={searchedRecipe}/>
-                    </div>
+                    {currentUser
+                        &&
+                        <div className='mt-4 float-end'>
+                            <p>
+                                {
+                                    !isLiked
+                                    &&
+                                    <i className="bi bi-heart pe-2 fs-5 pb-3"
+                                       onClick={() => likeButtonHandler()}>
+                                        {searchedRecipe.numberOfLikes}
+                                    </i>
+                                }
+                                {
+                                    isLiked
+                                    &&
+                                    <i className="bi bi-heart-fill pe-2 fs-5 pb-3 text-danger"
+                                       onClick={() => disLikeButtonHandler()}>
+                                        {searchedRecipe.numberOfLikes}
+                                    </i>
+                                }
 
+                            </p>
+
+                            <p>
+                                {
+                                    !isBookmarked
+                                    &&
+                                    <i className="bi bi-book pe-2 fs-5 pb-3"
+                                       onClick={() => bookmarkButtonHandler()}>
+                                    </i>
+                                }
+                                {
+                                    isBookmarked
+                                    &&
+                                    <i className="bi bi-book-fill pe-2 fs-5 pb-3 text-success"
+                                       onClick={() => unbookmarkButtonHandler()}>
+                                    </i>
+                                }
+
+                            </p>
+                        </div>
+                    }
                     <div className='mt-2 mb-2 ms-auto me-auto card w-75'>
                         <img
                             src={`/images/${searchedRecipe.image}`}
