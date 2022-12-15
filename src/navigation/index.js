@@ -11,13 +11,13 @@ const NavigationComponent = () => {
     console.log(currentUser)
     return (
             <div className= 'row'>
-                <div className = 'col-auto pt-2 pe-0 ps-0'>
+                <div className = 'd-none d-md-block col-md-1 col-lg-1 col-xl-1 col-xxl-1 pt-2 pe-0'>
                     <img src="/images/cooking.jpeg" width={50}  alt="..."/>
                 </div>
-                <div className = 'ps-2 col-3 position-relative'>
+                <div className = 'col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 ms-0 ps-0 col-xxl-3 position-relative'>
                     <Search/>
                 </div>
-                <div className = 'col-8 float-end'>
+                <div className = 'col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8 col-xxl-8 float-end'>
                     <ul className = 'nav nav-pills justify-content-around '>
                         <Link to='/' className = {`nav-item  ${pathname === '/'?'active override-bs':''}`}>
                             <i className='bi bi-houses ps-2 pb-0 fs-4 text-black'></i>

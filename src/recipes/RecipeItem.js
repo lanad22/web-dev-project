@@ -170,6 +170,8 @@ const RecipeItem = () => {
                             }
                             <ul className="list-group">
                                 {
+                                    comments.length > 0
+                                    &&
                                     comments.map((comment) =>
                                         <li className="list-group-item">
                                             {comment.comment}
@@ -178,7 +180,7 @@ const RecipeItem = () => {
                                                 {comment.postedBy.lastname}
                                                 <img width={25}
                                                      alt='...' className="float-end rounded-circle pb-1 pt-0 ms-1"
-                                                     src='/images/owl.jpeg'/>
+                                                     src={comment.postedBy.profilePhoto}/>
                                             </Link>
                                         </li>
                                     )
