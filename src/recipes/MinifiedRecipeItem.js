@@ -18,7 +18,7 @@ const MinifiedRecipeItem = ({recipe}) => {
                     <Link to={`/profile/${recipe.chef._id}`}>
                         <img width={50}
                              alt = '...' className="float-end rounded-circle"
-                             src='/images/owl.jpeg'/>
+                             src = {recipe.chef.profilePhoto}/>
                     </Link>
 
                 </div>

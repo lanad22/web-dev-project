@@ -19,6 +19,9 @@ const Register = () => {
         }
         setError(null)
         const newUser = {firstname, lastname, email, password, userType}
+        if (userType === 'CHEF') newUser.profilePhoto = "/images/chef_red.png"
+        else if (userType === 'ENTHUSIAST') newUser.profilePhoto = "/images/enthusiast.png"
+
         dispatch(registerThunk(newUser))
     }
     return(

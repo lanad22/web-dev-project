@@ -29,7 +29,7 @@ const Meal = () => {
 
             <div className='p-3 row'>
                 <div className='col'>
-                    <div className='card m-auto'>
+                    <div className='card l-auto col-12 d-md-block'>
                         <img
                             src={detail.image}
                             className='card-img' alt="recipe"

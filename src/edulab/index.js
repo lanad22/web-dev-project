@@ -30,7 +30,7 @@ function EduLab(){
                 <NavigationComponent/>
             </div>
             <div className = 'mt-2 row'>
-                <div className = 'col-8 border border-light p-0'>
+                <div className = 'col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 border border-light p-0'>
 
                         <Routes>
                         <Route index
@@ -71,7 +71,7 @@ function EduLab(){
                             </ProtectedRoute>}/>
                     </Routes>
                 </div>
-                <div className = 'col-4'>
+                <div className = 'col-sm-none col-md-none col-lg-4 col-xl-4 col-xxl-4'>
                     <Ads/>
                 </div>
             </div>

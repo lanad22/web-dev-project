@@ -31,23 +31,9 @@ const EditProfile = () => {
     return (
         <>
             <div className="fs-3">
-                <span><Link to="/tuiter/profile" className="text-black text-decoration-none">
+                <span><Link to="/profile" className="text-black text-decoration-none">
                     <i className="bi bi-x-lg">
                 </i></Link></span> Edit Profile</div>
-            <img src = "/images/starship.jpeg"
-                 style= {{
-                     width: `100%`,
-                     maxHeight: `200px`,
-                     overflow: `hidden`
-                 }}
-            />
-            <img src = "/images/spacex.jpeg"
-                 className="rounded-circle float-start zindex-popover position-relative" height={100}
-                 style={{
-                     marginTop : `-50px`,
-                     marginLeft : `20px`
-                 }}
-            />
             <form style={{marginTop:50}}>
                 {
                     error &&
