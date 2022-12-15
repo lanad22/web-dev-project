@@ -2,37 +2,37 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router";
 import {useDispatch, useSelector} from "react-redux";
 import {
+    addCommentThunk,
     bookmarkRecipeThunk,
-    dislikeRecipeThunk,
+    dislikeRecipeThunk, findCommentsForRecipeThunk,
     findRecipeByIdThunk, isRecipeBookmarkedByUserThunk,
     isRecipeLikedByUserThunk,
     likeRecipeThunk, unbookmarkRecipeThunk,
     updateRecipeThunk
 } from "./recipes-thunks";
 import {Link} from "react-router-dom";
-import {addToCookbookThunk} from "../cookbook/cookbook-thunks";
 
 const RecipeItem = () => {
     const {id} = useParams();
+    const [cmt, setCmt] = useState('');
     const dispatch = useDispatch();
-
     const {searchedRecipe} = useSelector((state) => state.recipes)
     const {currentUser} = useSelector((state) => state.users)
+    const {comments} = useSelector((state) => state.recipes)
+
     let item = null;
     if(currentUser !== null) {
         item = {rid: searchedRecipe._id, uid:currentUser._id}
     }
     const {isLiked} = useSelector((state) => state.recipes)
     const {isBookmarked} = useSelector((state) => state.recipes)
-    console.log(isLiked)
 
     useEffect(() => {
         dispatch(isRecipeLikedByUserThunk(item))
         dispatch(isRecipeBookmarkedByUserThunk(item))
         dispatch(findRecipeByIdThunk(id))
-    },[searchedRecipe.numberOfLikes, isLiked, isBookmarked])
-
-
+        item != null &&dispatch(findCommentsForRecipeThunk(item.rid))
+    },[searchedRecipe.numberOfLikes, isLiked, isBookmarked, comments.length])
 
     const likeButtonHandler = () => {
         dispatch(updateRecipeThunk({
@@ -42,12 +42,18 @@ const RecipeItem = () => {
         dispatch(likeRecipeThunk(item))
     }
 
-    const bookmarkButtonHandler = () => {
-        dispatch(bookmarkRecipeThunk(item))
-    }
+    const bookmarkButtonHandler = () => {dispatch(bookmarkRecipeThunk(item))}
 
-    const unbookmarkButtonHandler = () => {
-        dispatch(unbookmarkRecipeThunk(item))
+    const unbookmarkButtonHandler = () => {dispatch(unbookmarkRecipeThunk(item))}
+
+    const handleCommentButton = () => {
+        const commentBody = {
+            recipe: searchedRecipe._id,
+            comment: cmt,
+            postedBy: item.uid
+        }
+        dispatch(addCommentThunk(commentBody))
+        setCmt('')
     }
 
     const disLikeButtonHandler = () => {
@@ -80,7 +86,8 @@ const RecipeItem = () => {
                     }
                     {searchedRecipe.postedOn}
 
-                    {currentUser
+                    {
+                        currentUser
                         &&
                         <div className='mt-4 float-end'>
                             <p>
@@ -151,6 +158,32 @@ const RecipeItem = () => {
                                     ))
                                 }
                             </div>
+                            {
+                                currentUser &&
+                                <div>
+                                    <textarea
+                                        onChange={(e) => setCmt(e.target.value)}
+                                        className="form-control"></textarea>
+                                        <button className="rounded-pill border-0 m-1"
+                                                onClick={() => handleCommentButton()}>Comment</button>
+                                </div>
+                            }
+                            <ul className="list-group">
+                                {
+                                    comments.map((comment) =>
+                                        <li className="list-group-item">
+                                            {comment.comment}
+                                            <Link to={`/profile/${comment.postedBy._id}`} className="float-end">
+                                                {comment.postedBy.firstname}&nbsp;
+                                                {comment.postedBy.lastname}
+                                                <img width={25}
+                                                     alt='...' className="float-end rounded-circle pb-1 pt-0 ms-1"
+                                                     src='/images/owl.jpeg'/>
+                                            </Link>
+                                        </li>
+                                    )
+                                }
+                            </ul>
                         </div>
 
                     </div>

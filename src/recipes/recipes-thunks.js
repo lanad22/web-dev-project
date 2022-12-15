@@ -2,6 +2,16 @@ import {createAsyncThunk} from "@reduxjs/toolkit"
 import * as service from './recipes-service'
 import {findRecipeById} from "./recipes-service";
 
+export const findCommentsForRecipeThunk = createAsyncThunk(
+    'findCommentsForRecipe', async (rid) =>
+        await service.findCommentsForRecipe(rid)
+)
+
+export const addCommentThunk = createAsyncThunk(
+    'addComment', async (item) =>
+        await service.addComment(item)
+)
+
 export const findAllRecipesThunk = createAsyncThunk(
     'findAllRecipes', async () =>
         await service.findAllRecipes()

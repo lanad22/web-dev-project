@@ -10,7 +10,7 @@ import {
     dislikeRecipeThunk,
     likeRecipeThunk,
     isRecipeBookmarkedByUserThunk,
-    unbookmarkRecipeThunk, bookmarkRecipeThunk
+    unbookmarkRecipeThunk, bookmarkRecipeThunk, findCommentsForRecipeThunk, addCommentThunk
 } from "./recipes-thunks";
 
 const initialState = {
@@ -18,7 +18,8 @@ const initialState = {
     loading: false,
     isLiked: false,
     isBookmarked: false,
-    searchedRecipe: {}
+    searchedRecipe: {},
+    comments: [],
 }
 const recipesReducer = createSlice({
     name: 'recipes',
@@ -73,6 +74,14 @@ const recipesReducer = createSlice({
         [bookmarkRecipeThunk.fulfilled]:
             (state,action) => {
                 state.isBookmarked = true
+            },
+        [findCommentsForRecipeThunk.fulfilled]:
+            (state, action) => {
+                state.comments = action.payload
+            },
+        [addCommentThunk.fulfilled]:
+            (state, action) => {
+                state.comments.push(action.payload)
             }
     }
 })
