@@ -26,7 +26,7 @@ const EditProfile = () => {
         user._id = currentUser._id;
         user.lastname = lastname;
         user.email = email;
-        user.password = password;
+        if(password !== '') user.password = password;
         console.log(user)
         dispatch(editProfileThunk(user));
     }
