@@ -62,11 +62,13 @@ export const createRecipe = async (newRecipe, uID) => {
 }
 
 export const findAllLikedRecipesForUser = async (uid) => {
-    //TODO: fill in
+    const response = await axios.get(`${BASE_URL}/likes/users/${uid}`)
+    return response.data
 }
 
 export const findAllCommentedRecipesForUser = async (uid) => {
-    //TODO: fill in
+    const response = await axios.get(`${BASE_URL}/comments/users/${uid}`)
+    return response.data
 }
 
 export const deleteRecipe = async (rid) => {

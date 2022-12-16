@@ -2,22 +2,26 @@ import {useDispatch, useSelector} from "react-redux";
 import React, {useEffect} from "react";
 import MinifiedRecipeItem from "../recipes/MinifiedRecipeItem";
 import {getCookBookForUserThunk} from "../cookbook/cookbook-thunks";
+import {findAllCommentedRecipesForUserThunk} from "../recipes/recipes-thunks";
 
 const UserCommentedRecipes = () => {
     const dispatch = useDispatch();
     const {currentUser} = useSelector((state) => state.users)
-    const {cookbook} = useSelector((state) => state.cookbook)
+    const {recipes} = useSelector((state) => state.recipes)
     useEffect(() => {
-        dispatch(getCookBookForUserThunk(currentUser._id)) //TODO: replace with commented recipies thunk call
+        dispatch(findAllCommentedRecipesForUserThunk(currentUser._id))
     }, [])
+    console.log(recipes)
 
     return(
         <>
             {
-                cookbook
-                    .filter(item => item.bookmarkedRecipe != null)
+                recipes.length !== 0
+                &&
+                recipes
+                    .filter(item => item.recipe != null)
                     .map(item =>
-                        <MinifiedRecipeItem key={item.bookmarkedRecipe._id} recipe={item.bookmarkedRecipe}/>)
+                        <MinifiedRecipeItem key={item.recipe._id} recipe={item.recipe}/>)
 
             }
         </>
