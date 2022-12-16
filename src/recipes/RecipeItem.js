@@ -19,6 +19,9 @@ const RecipeItem = () => {
     const {searchedRecipe} = useSelector((state) => state.recipes)
     const {currentUser} = useSelector((state) => state.users)
     const {comments} = useSelector((state) => state.recipes)
+    let totalCalories = 0;
+    if(searchedRecipe.ingredients != undefined)
+        searchedRecipe.ingredients.forEach((e) => (totalCalories = totalCalories + parseInt(e.calories)))
 
     let item = null;
     if(currentUser !== null) {
@@ -70,7 +73,6 @@ const RecipeItem = () => {
         dispatch(dislikeRecipeThunk(item))
     }
 
-    console.log(searchedRecipe)
     return (
         <div className='list-group-item'>
             <div className='row'>
@@ -174,6 +176,7 @@ const RecipeItem = () => {
                                     ))
                                 }
                             </div>
+                            <div>Total calories : {totalCalories}</div>
                             {
                                 currentUser &&
                                 <div>
