@@ -3,22 +3,25 @@ import React, {useEffect} from "react";
 import MinifiedRecipeItem from "../recipes/MinifiedRecipeItem";
 import {getCookBookForUserThunk} from "../cookbook/cookbook-thunks";
 import {useParams} from "react-router";
+import {findAllLikedRecipesForUserThunk} from "../recipes/recipes-thunks";
 
 const PublicUserLikedRecipes = () => {
     const {uid} = useParams();
     const dispatch = useDispatch();
-    const {cookbook} = useSelector((state) => state.cookbook)
+    const {recipes} = useSelector((state) => state.recipes)
     useEffect(() => {
-        dispatch(getCookBookForUserThunk(uid)) //TODO: replace with liked recipies thunk call
+        dispatch(findAllLikedRecipesForUserThunk(uid))
     }, [])
 
     return(
         <>
             {
-                cookbook
-                    .filter(item => item.bookmarkedRecipe != null)
+                recipes.length !== 0
+                &&
+                recipes
+                    .filter(item => item.likedRecipe != null)
                     .map(item =>
-                        <MinifiedRecipeItem key={item.bookmarkedRecipe._id} recipe={item.bookmarkedRecipe}/>)
+                        <MinifiedRecipeItem key={item.likedRecipe._id} recipe={item.likedRecipe}/>)
 
             }
         </>

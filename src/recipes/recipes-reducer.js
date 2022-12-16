@@ -10,12 +10,15 @@ import {
     dislikeRecipeThunk,
     likeRecipeThunk,
     isRecipeBookmarkedByUserThunk,
-    unbookmarkRecipeThunk, bookmarkRecipeThunk, findCommentsForRecipeThunk, addCommentThunk, findAllRecipesByUserThunk
+    unbookmarkRecipeThunk,
+    bookmarkRecipeThunk,
+    findCommentsForRecipeThunk,
+    addCommentThunk,
+    findAllLikedRecipesForUserThunk, findAllCommentedRecipesForUserThunk
 } from "./recipes-thunks";
 
 const initialState = {
     recipes: [],
-    recipesUser: [],
     loading: false,
     isLiked: false,
     isBookmarked: false,
@@ -43,6 +46,14 @@ const recipesReducer = createSlice({
             state.recipes = state.recipes.filter(r => r._id !== payload)
             }
         ,
+        [findAllLikedRecipesForUserThunk.fulfilled]:
+            (state, action) => {
+            state.recipes = action.payload
+            },
+        [findAllCommentedRecipesForUserThunk.fulfilled]:
+            (state, action) => {
+                state.recipes = action.payload
+            },
         [findRecipeByDishIdThunk.fulfilled]:
             (state, action) => {
                 state.recipes = state.recipes.length === 0 ? JSON.parse(window.localStorage.getItem('recipes')) :state.recipes
