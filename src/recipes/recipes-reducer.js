@@ -83,10 +83,6 @@ const recipesReducer = createSlice({
         [addCommentThunk.fulfilled]:
             (state, action) => {
                 state.comments.push(action.payload)
-            },
-        [findAllRecipesByUserThunk.fulfilled]:
-            (state, action) => {
-            state.recipesUser = action.payload
             }
     }
 })
