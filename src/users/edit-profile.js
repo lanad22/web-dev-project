@@ -1,7 +1,8 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
-import {editProfileThunk} from "./user-thunks";
+import {editProfileThunk, profileThunk} from "./user-thunks";
+import {useLocation} from "react-router";
 
 const EditProfile = () => {
     const {currentUser} = useSelector((state) => state.users)
@@ -22,10 +23,11 @@ const EditProfile = () => {
         setError(null)
         const user = {}
         user.firstname = firstname;
+        user._id = currentUser._id;
         user.lastname = lastname;
         user.email = email;
         user.password = password;
-
+        console.log(user)
         dispatch(editProfileThunk(user));
     }
     return (
