@@ -35,6 +35,9 @@ export const logout = async () => {
 
 export const deleteUser = async (uid) => {}
 
-export const editProfile = async (user_) => {
-
+export const editProfile = async (user) => {
+    console.log(user)
+    const response = await api.put(`${BASE_URL}/api/users/${user._id}`, user)
+    console.log(response)
+    return response.data;
 }

@@ -40,7 +40,12 @@ const usersReducer = createSlice({
             state.currentUser = action.payload
         },
         [editProfileThunk.fulfilled]: (state, action) => {
+            console.log(action.payload)
+            console.log("!!")
             state.currentUser = action.payload
+            console.log(state.currentUser)
+            console.log("!zz")
+
         },
     }
 })

@@ -1,9 +1,13 @@
 import {useDispatch, useSelector} from "react-redux";
-import {logoutThunk} from "./user-thunks";
+import {logoutThunk, profileThunk} from "./user-thunks";
 import {Link, Navigate, useNavigate} from "react-router-dom";
 import React, {useEffect} from "react";
+import {useLocation} from "react-router";
 
 const Profile = () => {
+    useEffect(() => {
+        dispatch(profileThunk())
+    }, [useLocation().pathname, ])
     const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch()
     const navigate = useNavigate()
