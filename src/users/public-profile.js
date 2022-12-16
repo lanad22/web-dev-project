@@ -41,7 +41,6 @@ const PublicProfile = () => {
                             <div style={{marginTop:75, marginLeft:20}}>
                                 <h3 className="fw-bold text-capitalize">{searchedUser.firstname} {searchedUser.lastname}</h3>
                                 <div className="text-secondary mb-3" style={{marginTop:`-10px`}}>{searchedUser.type}</div>
-                                <div className="text-secondary mb-3" style={{marginTop:`-20px`}}>{searchedUser.email}</div>
                                 <h6>{searchedUser.userType}</h6>
                                 {/*<i className="bi bi-geo-alt pe-4" style={{fontStyle:"normal"}}>Boston</i>*/}
                                 {/*<i className="bi bi-geo pe-4" style={{fontStyle:"normal"}}> Born 12/17</i>*/}

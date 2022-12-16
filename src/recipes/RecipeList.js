@@ -18,7 +18,7 @@ const RecipeList = () => {
         <>
             <ul className = 'p-5 list-group'>
                 {
-                    currentUser && currentUser.userType.toString().toLowerCase() === 'chef' &&
+                    currentUser &&
                         <div>
                             {
                                 recipes.filter((recipe) => recipe.chef._id === currentUser._id)
