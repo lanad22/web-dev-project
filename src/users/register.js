@@ -25,8 +25,8 @@ const Register = () => {
         dispatch(registerThunk(newUser))
     }
     return(
-        <>
-            <h1>Register</h1>
+        <div className = 'w-75 m-auto'>
+            <h2 className = 'text-center'>Register</h2>
             {
                 error &&
                 <div className="alert alert-danger">
@@ -36,28 +36,28 @@ const Register = () => {
             <label>Firstname</label>
             <input
                 className="form-control mb-2"
-                value={firstname}
+                //value={firstname}
                 onChange={(e) => setFirstname(e.target.value)}/>
             <label>Lastname</label>
             <input
                 className="form-control mb-2"
-                value={lastname}
+                //value={lastname}
                 onChange={(e) => setLastname(e.target.value)}/>
             <label>Email</label>
             <input
                 className="form-control mb-2"
-                value={email}
+                //value={email}
                 onChange={(e) => setEmail(e.target.value)}/>
             <label>Password</label>
             <input
                 className="form-control mb-2"
-                value={password}
+                //value={password}
                 type={"password"}
                 onChange={(e) => setPassword(e.target.value)}/>
             <label>Confirm Password</label>
             <input
                 className="form-control mb-2"
-                value={validatePassword}
+                //value={validatePassword}
                 type={"password"}
                 onChange={(e) => setValidatePassword(e.target.value)}/>
             <label>User Type</label>
@@ -65,21 +65,26 @@ const Register = () => {
 
             <input type="radio" id="chef" name="userType" value="CHEF"
                    onChange={(e) => userUserType("CHEF")}/>
-            <label htmlFor="chef">Chef</label>
+            <label className = 'ms-2' htmlFor="chef">
+                Chef
+            </label>
             <input className="ms-4" type="radio" id="enthusiast" name="userType" value="ENTHUSIAST"
                    defaultChecked={true}
                    onChange={(e) => userUserType("ENTHUSIAST")}/>
-            <label htmlFor="enthusiast">Enthusiast</label>
-            <button
-                onClick={handleRegisterBtn}
-                className="btn btn-primary w-100">
-                Register
-            </button>
+            <label className="ms-2" htmlFor="enthusiast">Enthusiast</label>
+            <div className = 'mt-3'>
+                <button
+                    className = 'mt-3'
+                    onClick={handleRegisterBtn}
+                    className="btn btn-primary w-100">
+                    Register
+                </button>
+            </div>
             {
                 currentUser &&
                 <h2>Welcome {currentUser.username}</h2>
             }
-        </>
+        </div>
     )
 }
 

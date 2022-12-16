@@ -23,13 +23,13 @@ const CreateNewRecipe = () => {
     const [ingredients, setIngredients] = useState([])
 
     const {currentUser} = useSelector((state) => state.users)
+    const {recipes} = useSelector((state) => state.recipes)
+
     const [name, setName] = useState('')
     const {found} = useSelector((state) => state.ingredients)
-
-    const search = found[0]
-
+    const [form, setForm] = useState(false)
     const newRecipe = {title, steps, dishId, ingredients, summary}
-    console.log(newRecipe)
+    //console.log(newRecipe)
 
     const handleSearchBtn = (name) => {
         dispatch(findIngredientsThunk(name))
@@ -41,6 +41,8 @@ const CreateNewRecipe = () => {
     const addIngredientBtn = (search) => {
         setIngredients(ingredients => [...ingredients, search])
     }
+    window.localStorage.setItem('recipes', JSON.stringify(recipes));
+
     return (
         <div className='p-3'>
 
@@ -96,7 +98,7 @@ const CreateNewRecipe = () => {
                 </div>
                 <div className='p-4 list-group-item'>
                     Search and Add Ingredients
-                    <div className='pt-4 pb-5 input-group w-75 m-auto'>
+                    <div className='pt-4 input-group w-75 m-auto'>
 
                         <input className='form-control'
                                placeholder='e.g. butter'
@@ -105,53 +107,55 @@ const CreateNewRecipe = () => {
                         <div input-group-append mt-3>
                             <button
                                 className='position-absolute btn btn-secondary'
-                                onClick={() => handleSearchBtn(name)}>
+                                onClick={() => {
+                                    handleSearchBtn(name);
+                                    setForm(true);
+                                }
+                                }>
                                 <i className="bi bi-search text-white"></i>
                             </button>
                         </div>
-
                     </div>
 
                     {
-                        search &&
-                        <div>
-                            <span>Nutrition Facts</span>
-                            <div className='ps-4 pt-2 w-75 m-auto'>
-                                <ul className='pt-3 list-group list-group-horizontal'>
-                                    <li className='list-group-item'>{search.calories} calories</li>
-                                    <li className='list-group-item'>{search.protein} grams of protein</li>
-                                    <li className='list-group-item'>{search.fat} grams of fat</li>
-                                    <li className='list-group-item'>{search.carbs} of carbohydrate</li>
-                                </ul>
-                                <div className='pt-4 text-center'>
-                                    <button className='btn border-secondary'
-                                            onClick = {() => addIngredientBtn(search)}
-                                    >
-                                        <i className="fa-solid fa-plus-large pe-2"></i>
-                                        Add {search.name} to your recipe
-                                    </button>
-
-                                </div>
-
-
-                            </div>
+                        form && found[0] &&
+                        <div className='w-75 m-auto pt-4 pb-2 text-center'>
+                            <button className='btn border-secondary'
+                                    onClick={() => {
+                                        addIngredientBtn(found[0]);
+                                        setForm(false)
+                                    }
+                                    }
+                            >
+                                <i className="fa-solid fa-plus-large pe-2"></i>
+                                Add {found[0].name} to your recipe
+                            </button>
                         </div>
 
                     }
-
-
+                    {
+                        newRecipe.ingredients.length !== 0 &&
+                        <div className = 'pt-4 text-center'>
+                            Ingredients List
+                            {
+                                newRecipe.ingredients.map((ingredient) => (
+                                    <li> {ingredient.name}</li>))
+                            }
+                        </div>
+                    }
                 </div>
-
-
             </div>
 
-            <Link to={`/search/${query}/details/${dishId}`}
-                  className='btn btn-outline-primary rounded-pill'
-                  onClick={handleSaveBtn}>
-                Save
-            </Link>
+            <div className='pt-3 row w-50 m-auto'>
+                <Link to={`/search/${query}/details/${dishId}`}
+                      className='btn btn-outline-primary rounded-pill fw-bold'
+                      onClick={handleSaveBtn}>
+                    Save
+                </Link>
+            </div>
 
         </div>
     )
 }
 export default CreateNewRecipe
+

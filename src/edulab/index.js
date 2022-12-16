@@ -29,8 +29,8 @@ function EduLab(){
             <div className = 'row bg-white p-0'>
                 <NavigationComponent/>
             </div>
-            <div className = 'mt-2 row'>
-                <div className = 'col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 border border-light p-0'>
+            <div className = 'mt-2 pe-2 row'>
+                <div className = 'col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 border border-light override-bs p-2 rounded'>
 
                         <Routes>
                         <Route index

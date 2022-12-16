@@ -87,10 +87,10 @@ const RecipeItem = () => {
                     }
 
                 </div>
-                <div className="col-9">
+                <div className="col-10">
                     {searchedRecipe.chef &&
                     <span className='text-capitalize fw-bold'>{searchedRecipe.chef.firstname} {searchedRecipe.chef.lastname}
-                        <i className="ps-2 fa-duotone fa-hat-chef"></i><br/>
+                        <i className="ps-2 fa-regular fa-user-chef"></i><br/>
                         </span>
                     }
                     {searchedRecipe.postedOn}
@@ -103,20 +103,18 @@ const RecipeItem = () => {
                                 {
                                     !isLiked
                                     &&
-                                    <i className="bi bi-heart pe-2 fs-5 pb-3 ms-1"
-                                       onClick={() => likeButtonHandler()}>
-                                        {searchedRecipe.numberOfLikes}
-                                    </i>
+                                    <i className="bi bi-heart pe-2 fs-5 pb-3 ms-1 pe-3"
+                                       onClick={() => likeButtonHandler()}></i>
                                 }
                                 {
                                     isLiked
                                     &&
                                     <i className="bi bi-heart-fill pe-2 fs-5 pb-3 ms-1 text-danger"
                                        onClick={() => disLikeButtonHandler()}>
-                                        {searchedRecipe.numberOfLikes}
                                     </i>
                                 }
-
+                                <br/>
+                                <span className = 'ms-2 fw-bold'>{searchedRecipe.numberOfLikes}</span>
                             </p>
                             <p>
                                 {

@@ -16,7 +16,6 @@ body{
 a:Link{
     text-decoration: none;
 }
-.wd-background{
-    background-color: darkgrey !important;
-    font-style: italic;
+.border-light.override-bs{
+    border-color: #C1C1C1 !important;
 }

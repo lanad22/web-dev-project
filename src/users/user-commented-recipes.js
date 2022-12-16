@@ -7,18 +7,18 @@ import {findAllCommentedRecipesForUserThunk} from "../recipes/recipes-thunks";
 const UserCommentedRecipes = () => {
     const dispatch = useDispatch();
     const {currentUser} = useSelector((state) => state.users)
-    const {recipes} = useSelector((state) => state.recipes)
+    const {commentedRecipeUser} = useSelector((state) => state.recipes)
     useEffect(() => {
         dispatch(findAllCommentedRecipesForUserThunk(currentUser._id))
     }, [])
-    console.log(recipes)
+    //console.log(recipes)
 
     return(
         <>
             {
-                recipes.length !== 0
+                commentedRecipeUser.length !== 0
                 &&
-                recipes
+                commentedRecipeUser
                     .filter(item => item.recipe != null)
                     .map(item =>
                         <MinifiedRecipeItem key={item.recipe._id} recipe={item.recipe}/>)

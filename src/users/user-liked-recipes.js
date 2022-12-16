@@ -6,7 +6,7 @@ import {findAllLikedRecipesForUserThunk} from "../recipes/recipes-thunks";
 
 const UserLikedRecipes = () => {
     const {currentUser} = useSelector((state) => state.users)
-    const {recipes} = useSelector((state) => state.recipes)
+    const {likedRecipeUser} = useSelector((state) => state.recipes)
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(findAllLikedRecipesForUserThunk(currentUser._id))
@@ -14,9 +14,9 @@ const UserLikedRecipes = () => {
     return(
         <>
             {
-                recipes.length !== 0
+                likedRecipeUser.length !== 0
                 &&
-                recipes
+                likedRecipeUser
                     .filter(item => item.likedRecipe != null)
                     .map(item =>
                         <MinifiedRecipeItem key={item.likedRecipe._id} recipe={item.likedRecipe}/>)

@@ -10,7 +10,10 @@ const HomeComponent = () => {
             <div>
                 {
                     currentUser &&
-                    <h2>Welcome {currentUser.firstname}</h2>
+                    <h2 className = 'pt-4 pb-0 text-center'>
+                        <i className="fa-light fa-hand-wave pe-2"></i>
+                        Hello {currentUser.firstname}
+                    </h2>
                 }
 
                 <RecipeList/>

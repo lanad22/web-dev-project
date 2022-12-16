@@ -10,15 +10,15 @@ const Ads = () => {
     }, [])
     return(
         <>
-            <div className="p-2 list-group border border-light">
-                <h6 className = 'p-3 fw-bold'>
+            <div className="ms-3 p-0 list-group border border-light override-bs border-top-0 border-bottom-0">
+                <h6 className = 'p-3 fw-bold list-group-item border-start-0 border-end-0'>
                     <i className="fa-duotone fa-chart-line-up pe-2"></i>
                     Trending Now
                 </h6>
 
                 {trending.recipes && trending.recipes.map((meal) =>
                     (
-                        <div className='list-group-item'>
+                        <div className='list-group-item border-start-0 border-end-0'>
                             <div className = 'row p-2'>
                                 <div className = 'col-10'>
                                     {meal.title}
@@ -32,6 +32,7 @@ const Ads = () => {
                         </div>
                     )
                 )}
+
             </div>
         </>
     );

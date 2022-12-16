@@ -14,11 +14,15 @@ import {
     bookmarkRecipeThunk,
     findCommentsForRecipeThunk,
     addCommentThunk,
-    findAllLikedRecipesForUserThunk, findAllCommentedRecipesForUserThunk
+    findAllLikedRecipesForUserThunk, findAllCommentedRecipesForUserThunk,
+    findAllRecipesByUserThunk
 } from "./recipes-thunks";
 
 const initialState = {
     recipes: [],
+    likedRecipeUser: [],
+    commentedRecipeUser: [],
+    recipeUser: [],
     loading: false,
     isLiked: false,
     isBookmarked: false,
@@ -39,20 +43,21 @@ const recipesReducer = createSlice({
             },
         [createRecipeThunk.fulfilled]:
             (state,action) => {
-            state.recipes.unshift(action.payload)
+                state.recipes.unshift(action.payload)
+                window.localStorage.setItem('recipes', JSON.stringify(state.recipes));
             },
         [deleteRecipeThunk.fulfilled]:
             (state, {payload}) => {
-            state.recipes = state.recipes.filter(r => r._id !== payload)
+                state.recipes = state.recipes.filter(r => r._id !== payload)
             }
         ,
         [findAllLikedRecipesForUserThunk.fulfilled]:
             (state, action) => {
-            state.recipes = action.payload
+            state.likedRecipeUser = action.payload
             },
         [findAllCommentedRecipesForUserThunk.fulfilled]:
             (state, action) => {
-                state.recipes = action.payload
+                state.commentedRecipeUser = action.payload
             },
         [findRecipeByDishIdThunk.fulfilled]:
             (state, action) => {
@@ -94,6 +99,10 @@ const recipesReducer = createSlice({
         [addCommentThunk.fulfilled]:
             (state, action) => {
                 state.comments.push(action.payload)
+            },
+        [findAllRecipesByUserThunk.fulfilled]:
+            (state, action) => {
+                state.recipeUser = action.payload
             }
     }
 })
