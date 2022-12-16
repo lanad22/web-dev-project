@@ -28,13 +28,16 @@ const Login = () => {
                     {error}
                 </div>
             }
+            <label>Email</label>
             <input
                 className="form-control mb-2"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}/>
+            <label>Password</label>
             <input
                 className="form-control mb-2"
                 value={password}
+                type="password"
                 onChange={(e) => setPassword(e.target.value)}/>
             <button
                 onClick={handleLoginBtn}

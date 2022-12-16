@@ -33,28 +33,36 @@ const Register = () => {
                     {error}
                 </div>
             }
+            <label>Firstname</label>
             <input
                 className="form-control mb-2"
                 value={firstname}
                 onChange={(e) => setFirstname(e.target.value)}/>
+            <label>Lastname</label>
             <input
                 className="form-control mb-2"
                 value={lastname}
                 onChange={(e) => setLastname(e.target.value)}/>
+            <label>Email</label>
             <input
                 className="form-control mb-2"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}/>
+            <label>Password</label>
             <input
                 className="form-control mb-2"
                 value={password}
                 type={"password"}
                 onChange={(e) => setPassword(e.target.value)}/>
+            <label>Confirm Password</label>
             <input
                 className="form-control mb-2"
                 value={validatePassword}
                 type={"password"}
                 onChange={(e) => setValidatePassword(e.target.value)}/>
+            <label>User Type</label>
+            <br></br>
+
             <input type="radio" id="chef" name="userType" value="CHEF"
                    onChange={(e) => userUserType("CHEF")}/>
             <label htmlFor="chef">Chef</label>

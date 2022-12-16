@@ -42,7 +42,7 @@ const NavigationComponent = () => {
                             &&
                             <>
                                 <Link to='/login' className = {`nav-item  ${pathname === '/login'?'active override-bs':''}`}>
-                                    <i className='bi bi-person-plus ps-4 pb-0 fs-4 text-black'></i>
+                                    <i className='bi bi-person-plus ps-2 pb-0 fs-4 text-black'></i>
                                     <div className="text-black p-0">Login</div>
                                 </Link>
                                 <Link to='/register' className = {`nav-item  ${pathname === '/register'?'active override-bs':''}`}>
@@ -57,7 +57,7 @@ const NavigationComponent = () => {
                             currentUser.userType.toString().toLowerCase() === 'staff'
                             &&
                             <Link to='/ingredient-upload' className = {`nav-item  ${pathname === '/ingredient-upload'?'active override-bs':''}`}>
-                                <i className='bi bi-upload ps-4 pb-0 fs-4 text-black'></i>
+                                <i className='bi bi-upload ps-3 pb-0 fs-4 text-black'></i>
                                 <div className="text-black p-0">Upload</div>
                             </Link>
                         }
