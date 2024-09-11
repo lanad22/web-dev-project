@@ -28,7 +28,7 @@ const RecipeList = () => {
             currentUser &&
             dispatch(findAllCommentedRecipesForUserThunk(currUser._id))
         }
-    }, [])
+    }, [dispatch])
     const {recipes} = useSelector((state) => state.recipes)
     const {recipeUser} = useSelector((state) => state.recipes)
     const {likedRecipeUser} = useSelector((state) => state.recipes)

@@ -10,7 +10,7 @@ const CurrentUser = ({children}) => {
         dispatch(profileThunk())
         console.log('in cu')
         console.log(currentUser)
-    }, [useLocation().pathname, ])
+    }, [dispatch,useLocation().pathname, ])
     return(children)
 }
 export default CurrentUser

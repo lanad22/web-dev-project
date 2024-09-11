@@ -11,7 +11,7 @@ const MealList = () => {
 
     useEffect(() => {
         dispatch(findAllResultsThunk(query))
-    }, [])
+    }, [dispatch])
 
     return (
         <>
