@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {findCommentsForRecipeThunk} from "./recipes-thunks";
-const BASE_URL = 'http://localhost:4000/api'
+//const BASE_URL = 'http://localhost:4000/api'
+const BASE_URL = 'https://web-dev-project-node.fly.dev/api'
 const RECIPES_API = `${BASE_URL}/recipes`;
 
 export const findAllRecipes = async () => {
