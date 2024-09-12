@@ -36,7 +36,7 @@ const RecipeItem = () => {
         dispatch(isRecipeBookmarkedByUserThunk(item))
         dispatch(findRecipeByIdThunk(id))
         item != null &&dispatch(findCommentsForRecipeThunk(item.rid))
-    },[dispatch,id,searchedRecipe.numberOfLikes, isLiked, isBookmarked, comments.length])
+    },[id,searchedRecipe.numberOfLikes, isLiked, isBookmarked, comments.length])
 
     const deleteRecipeHandler = (id) => {
         dispatch(deleteRecipeThunk(id))

@@ -11,7 +11,7 @@ const UserCommentedRecipes = () => {
     const {commentedRecipeUser} = useSelector((state) => state.recipes)
     useEffect(() => {
         dispatch(findAllCommentedRecipesForUserThunk(uid))
-    }, [dispatch])
+    }, [])
     //console.log(recipes)
     return(
         <>

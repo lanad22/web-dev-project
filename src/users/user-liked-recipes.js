@@ -10,7 +10,7 @@ const UserLikedRecipes = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(findAllLikedRecipesForUserThunk(currentUser._id))
-    }, [dispatch])
+    }, [])
     return(
         <>
             {

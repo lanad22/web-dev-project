@@ -7,7 +7,7 @@ import {useLocation} from "react-router";
 const Profile = () => {
     useEffect(() => {
         dispatch(profileThunk())
-    }, [dispatch,useLocation().pathname, ])
+    }, [useLocation().pathname, ])
     const {currentUser} = useSelector((state) => state.users)
     const dispatch = useDispatch()
     const navigate = useNavigate()

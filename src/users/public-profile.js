@@ -8,7 +8,7 @@ const PublicProfile = () => {
     const {uid} = useParams();
     useEffect(() => {
         dispatch(findUserByIdThunk(uid))
-    }, [dispatch,uid])
+    }, [uid])
     const {searchedUser} = useSelector((state) => state.users);
     const dispatch = useDispatch();
      return (

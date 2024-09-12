@@ -11,7 +11,7 @@ const PublicUserLikedRecipes = () => {
     const {likedRecipeUser} = useSelector((state) => state.recipes)
     useEffect(() => {
         dispatch(findAllLikedRecipesForUserThunk(uid))
-    }, [dispatch])
+    }, [])
 
     return(
         <>

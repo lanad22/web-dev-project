@@ -16,7 +16,7 @@ const Meal = () => {
     useEffect(() => {
         dispatch(findResultByIdThunk(id))
         dispatch(findRecipeByDishIdThunk(id))
-    }, [dispatch,id]);
+    }, [id]);
 
 
     return (
